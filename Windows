@@ -1,0 +1,29 @@
+# include/ dir and obj/ dir
+IDIR=src
+ODIR=obj
+
+# Compiler options and flags
+CXX=g++
+
+CXXFLAGS=-Iinclude/ -Llib/
+ERRFLAGS=-Wall -Wunused-variable -Wextra
+
+# Put header files here
+_DEPS=main.cpp
+DEPS=$(patsubst %, $(IDIR)/%, $(_DEPS))
+
+# Put cpp files but change extension to .o
+_OBJ=main.o
+OBJ=$(patsubst %, $(ODIR)/%, $(_OBJ))
+
+# Libraries
+LIBS=-lraylib -lopengl32 -lgdi32 -lwinmm
+
+# Compile .cpp files to .o files
+$(ODIR)/%.o: src/%.cpp $(DEPS)
+	$(CXX) -c -o $@ $< $(CXXFLAGS) $(ERRFLAGS)
+
+# Link .o files and make an executable in bin/ folder
+main: $(OBJ)
+	$(CXX) -o bin/$@.exe $^ $(CXXFLAGS) $(ERRFLAGS) $(LIBS)
+	bin/$@.exe
