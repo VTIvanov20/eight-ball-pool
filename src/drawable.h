@@ -2,26 +2,49 @@
 
 #include <raylib.h>
 #include <iostream>
+#include <vector>
 
-class Drawable
+// DrawableManager - Consists of functions which make drawable management easier
+// The point of this is so you can create Drawables at any point in the program
+namespace DrawableManager
 {
-public:
-    Drawable() = default;
-    virtual ~Drawable() = default;
+    class Drawable
+    {
+    private:
+        int id;
 
-    virtual void Create() {};
-    virtual void Update() {};
-    virtual void Draw() {};
-};
+    public:
+        Drawable();
+        virtual ~Drawable() = default;
 
-class Sprite : public Drawable
+        virtual void Create() {}; // Gets called once whenever the program is initializing itself
+        virtual void Update() {}; // Gets called once per frame
+        virtual void Draw() {}; // Gets called once per frame (after Update)
+
+        int GetID()
+        {
+            return id;
+        }
+    };
+    
+    void CreateAll(); // Calls Create function in every Drawable in drawablePool
+    void UpdateAll(); // Calls Update function in every Drawable in drawablePool
+    void DrawAll(); // Calls Draw function in every Drawable in drawablePool
+
+    void DestroyAllDrawables(); // Destroys every Drawable in drawablePool and clears drawablePool
+    void DestroyDrawableFromID(int id); // Iterates through drawablePool and destroys the Drawable corresponding to the ID
+
+    Drawable* GetDrawableFromID(int id); // Iterates through drawablePool and gets the Drawable corresponding to the ID (returns nullptr if ID is non-existent)
+}
+
+class Sprite : public DrawableManager::Drawable
 {
 protected:
     Rectangle* position;
     Texture2D texture;
 
 public:
-    Sprite(const char* texture_file_name, Rectangle initial_position)
+    Sprite(const char* texture_file_name, Rectangle initial_position) : Drawable()
     {
         position = new Rectangle;
         position->x = initial_position.x;

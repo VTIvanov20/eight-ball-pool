@@ -15,40 +15,31 @@ int main()
 
     SetTargetFPS(60);
     
-    std::vector<Drawable*> drawables;
-    drawables.push_back(new Player("resources/images/square.png", {0, 0, 0, 0}));
-    drawables.push_back(new Sprite("resources/images/square.png", {100, 100, 0, 0}));
-    drawables.push_back(new Sprite("resources/images/square.png", {200, 200, 0, 0}));
-    drawables.push_back(new Sprite("resources/images/square.png", {300, 300, 0, 0}));
-    drawables.push_back(new Sprite("resources/images/square.png", {400, 400, 0, 0}));
+    new Player("resources/images/stick.png", {0, 0, 0, 0});
+    new Sprite("resources/images/stick.png", {100, 100, 0, 0});
+    new Sprite("resources/images/stick.png", {200, 200, 0, 0});
+    new Sprite("resources/images/stick.png", {300, 300, 0, 0});
+    new Sprite("resources/images/stick.png", {400, 400, 0, 0});
 
-    for (auto& drawable : drawables)
-    {
-        drawable->Create();
-    }
+    DrawableManager::DestroyDrawableFromID(2);
+    DrawableManager::CreateAll();
     
     while(!WindowShouldClose())
     {
         BeginDrawing();
             ClearBackground(BLACK);
 
-            for (auto& drawable : drawables)
-            {
-                drawable->Update();
-                drawable->Draw();
-            }
+            DrawableManager::UpdateAll();
+            DrawableManager::DrawAll();
 
             UpdatePhysics();
 
+            // Draw FPS
             DrawText(std::to_string(GetFPS()).c_str(), 0, 0, 20, GREEN);
-            DrawText("Ya like Jazz?", 1000, 200, 20, LIGHTGRAY);
         EndDrawing();
     }
 
-    for (auto& drawable : drawables)
-    {
-        delete drawable;
-    }
+    DrawableManager::DestroyAllDrawables();
 
     ClosePhysics();
     CloseWindow();

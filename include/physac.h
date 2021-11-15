@@ -607,7 +607,7 @@ void PhysicsShatter(PhysicsBody body, Vector2 position, float force)
 
                     PhysicsBody body = CreatePhysicsBodyPolygon(center, 10, 3, 10);     // Create polygon physics body with relevant values
 
-                    PhysicsVertexData vertexData {};
+                    PhysicsVertexData vertexData = { 0 };
                     vertexData.vertexCount = 3;
 
                     vertexData.positions[0] = MathVector2Subtract(vertices[i], offset);
@@ -798,7 +798,7 @@ void DestroyPhysicsBody(PhysicsBody body)
 {
     if (body != NULL)
     {
-        unsigned int id = body->id;
+        int id = body->id;
         int index = -1;
 
         for (unsigned int i = 0; i < physicsBodiesCount; i++)
@@ -1101,9 +1101,9 @@ static void UpdatePhysicsStep(void)
 static int FindAvailableBodyIndex()
 {
     int index = -1;
-    for (unsigned int i = 0; i < PHYSAC_MAX_BODIES; i++)
+    for (int i = 0; i < PHYSAC_MAX_BODIES; i++)
     {
-        unsigned int currentId = i;
+        int currentId = i;
 
         // Check if current id already exist in other physics body
         for (unsigned int k = 0; k < physicsBodiesCount; k++)
@@ -1116,7 +1116,7 @@ static int FindAvailableBodyIndex()
         }
 
         // If it is not used, use it as new physics body id
-        if (currentId == i)
+        if (currentId == (int)i)
         {
             index = (int)i;
             break;
@@ -1129,7 +1129,7 @@ static int FindAvailableBodyIndex()
 // Creates a default polygon shape with max vertex distance from polygon pivot
 static PhysicsVertexData CreateDefaultPolygon(float radius, int sides)
 {
-    PhysicsVertexData data {};
+    PhysicsVertexData data = { 0 };
     data.vertexCount = sides;
 
     // Calculate polygon vertices positions
@@ -1155,7 +1155,7 @@ static PhysicsVertexData CreateDefaultPolygon(float radius, int sides)
 // Creates a rectangle polygon shape based on a min and max positions
 static PhysicsVertexData CreateRectanglePolygon(Vector2 pos, Vector2 size)
 {
-    PhysicsVertexData data {};
+    PhysicsVertexData data = { 0 };
     data.vertexCount = 4;
 
     // Calculate polygon vertices positions
@@ -1181,9 +1181,9 @@ static PhysicsVertexData CreateRectanglePolygon(Vector2 pos, Vector2 size)
 static int FindAvailableManifoldIndex()
 {
     int index = -1;
-    for (unsigned int i = 0; i < PHYSAC_MAX_MANIFOLDS; i++)
+    for (int i = 0; i < PHYSAC_MAX_MANIFOLDS; i++)
     {
-        unsigned int currentId = i;
+        int currentId = i;
 
         // Check if current id already exist in other physics body
         for (unsigned int k = 0; k < physicsManifoldsCount; k++)
@@ -1198,7 +1198,7 @@ static int FindAvailableManifoldIndex()
         // If it is not used, use it as new physics body id
         if (currentId == i)
         {
-            index = (int)i;
+            index = i;
             break;
         }
     }
@@ -1242,7 +1242,7 @@ static void DestroyPhysicsManifold(PhysicsManifold manifold)
 {
     if (manifold != NULL)
     {
-        unsigned int id = manifold->id;
+        int id = manifold->id;
         int index = -1;
 
         for (unsigned int i = 0; i < physicsManifoldsCount; i++)
