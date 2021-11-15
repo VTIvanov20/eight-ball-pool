@@ -1,11 +1,11 @@
 #include "drawable.h"
 #include <raylib.h>
 #include <iostream>
-#include <vector>
+#include <list>
 
 namespace DrawableManager
 {
-    std::vector<Drawable*> drawablePool;
+    std::list<Drawable*> drawablePool;
     int currentId = 0;
 
     Drawable::Drawable()
@@ -46,6 +46,8 @@ namespace DrawableManager
     {
         for (auto& drawable : drawablePool)
         {
+            std::cout << "INFO: DrawableManager: Destroyed Drawable with ID: " << drawable->GetID() << std::endl;
+
             delete drawable;
         }
 
@@ -60,8 +62,8 @@ namespace DrawableManager
 
             if (drawablePtr->GetID() == id)
             {
-                delete drawablePtr;
                 drawablePool.erase(drawable);
+                delete drawablePtr;
 
                 std::cout << "INFO: DrawableManager: Destroyed Drawable with ID: " << id << std::endl;
 
