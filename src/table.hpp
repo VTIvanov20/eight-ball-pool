@@ -4,6 +4,7 @@
 #include "config.h"
 #include <list>
 #include <physac.h>
+#include <raylib.h>
 #include <iostream>
 
 class Ball : public Sprite
@@ -35,6 +36,8 @@ public:
         DestroyPhysicsBody(body);
     }
 
+    Vector2 GetPosition();
+
     void Create() override;
     void Update() override;
     void Draw() override;
@@ -45,6 +48,11 @@ class Table : public Sprite
 private:
     std::list<Ball*> balls;
     const Vector2 starting_ball_position = {930, 352};
+
+    PhysicsBody top_wall;
+    PhysicsBody bottom_wall;
+    // PhysicsBody left_wall;
+    // PhysicsBody right_wall;
 
 public:
     Table() : Sprite("resources/images/table.png", {})
