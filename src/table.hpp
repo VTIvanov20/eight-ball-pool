@@ -6,6 +6,7 @@
 #include <physac.h>
 #include <raylib.h>
 #include <iostream>
+#include <string>
 
 class Ball : public Sprite
 {
@@ -28,7 +29,7 @@ public:
     {
         std::cout << "Called Ball()" << std::endl;
         ball_number = number;
-        scale_factor = 50.0f / sprite_texture.width;
+        sprite_scale_factor = 50.0f / sprite_texture.width;
     }
 
     virtual ~Ball()
@@ -43,21 +44,44 @@ public:
     void Draw() override;
 };
 
+class Stick : public Sprite
+{
+private:
+    const Vector2 starting_stick_position = { WINDOW_WIDTH / 2 - 340, WINDOW_HEIGHT / 2 };
+
+public:
+    Stick() : Sprite("resources/images/stick.png", {})
+    {
+        sprite_scale_factor = (float)WINDOW_WIDTH / sprite_texture.width;
+    }
+
+    virtual ~Stick() = default;
+
+    void Create() override;
+    void Update() override;
+};
+
 class Table : public Sprite
 {
 private:
     std::list<Ball*> balls;
-    const Vector2 starting_ball_position = {930, 352};
+    Ball* whiteBall;
 
-    PhysicsBody top_wall;
-    PhysicsBody bottom_wall;
-    // PhysicsBody left_wall;
-    // PhysicsBody right_wall;
+    Stick* stick;
+
+    const Vector2 starting_ball_position = {930, 350};
+
+    PhysicsBody top_wall[2];
+    PhysicsBody bottom_wall[2];
+    PhysicsBody left_wall[2];
+    PhysicsBody right_wall[2];
+
+    PhysicsBody hole[6];
 
 public:
     Table() : Sprite("resources/images/table.png", {})
     {
-        scale_factor = (float)WINDOW_WIDTH / sprite_texture.width;
+        sprite_scale_factor = (float)WINDOW_WIDTH / sprite_texture.width;
     }
 
     virtual ~Table() = default;

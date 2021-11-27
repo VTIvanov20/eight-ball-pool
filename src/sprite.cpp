@@ -2,13 +2,18 @@
 
 void Sprite::SetScale(float scale)
 {
-    scale_factor = scale;
+    sprite_scale_factor = scale;
 }
 
 void Sprite::SetPosition(Vector2 position)
 {
     sprite_position->x = position.x;
     sprite_position->y = position.y;
+}
+
+void Sprite::SetRotation(float rotation)
+{
+    sprite_rotation = rotation;
 }
 
 Vector2 Sprite::GetPosition()
@@ -18,12 +23,17 @@ Vector2 Sprite::GetPosition()
 
 float Sprite::GetWidth()
 {
-    return sprite_texture.width * scale_factor;
+    return sprite_texture.width * sprite_scale_factor;
 }
 
 float Sprite::GetHeight()
 {
-    return sprite_texture.height * scale_factor;
+    return sprite_texture.height * sprite_scale_factor;
+}
+
+float Sprite::GetRotation()
+{
+    return sprite_rotation;
 }
 
 void Sprite::Draw()
@@ -31,8 +41,8 @@ void Sprite::Draw()
     DrawTextureEx(
         sprite_texture,
         { sprite_position->x, sprite_position->y },
-        0.0f,
-        scale_factor,
+        sprite_rotation,
+        sprite_scale_factor,
         WHITE
     );
 }

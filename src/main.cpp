@@ -43,14 +43,9 @@ int main()
 
     SetTargetFPS(60);
 
-    new Sprite("resources/images/stick.png", { 0, 0 });
     new Table();
 
     DrawableManager::CreateAll();
-
-    PhysicsBody mouse_body = CreatePhysicsBodyRectangle({}, 50.0f, 50.0f, 1);
-    mouse_body->enabled = true;
-    mouse_body->freezeOrient = true;
     
     while(!WindowShouldClose())
     {
@@ -59,9 +54,6 @@ int main()
         
         BeginDrawing();
             ClearBackground(BLACK);
-
-            mouse_body->position = GetMousePosition();
-            mouse_body->velocity = GetMouseDelta();
 
             DrawableManager::UpdateAll();
             DrawableManager::DrawAll();
@@ -95,6 +87,7 @@ int main()
 
             // Draw Mouse Position
             DrawText(TextFormat("%.0f, %.0f", GetMousePosition().x, GetMousePosition().y), 0, WINDOW_HEIGHT - 20, 20, GREEN);
+            
         EndDrawing();
     }
 

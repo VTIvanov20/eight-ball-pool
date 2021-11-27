@@ -1,5 +1,7 @@
 #include "table.hpp"
 
+#include <math.h>
+
 Vector2 Ball::GetPosition()
 {
     return { body->position.x - GetWidth() / 2, body->position.y - GetHeight() / 2 };
@@ -26,7 +28,7 @@ void Ball::Draw()
         sprite_texture,
         { body->position.x - GetWidth() / 2, body->position.y - GetHeight() / 2 },
         0.0f,
-        scale_factor,
+        sprite_scale_factor,
         WHITE
     );
 
@@ -43,11 +45,45 @@ void Ball::Draw()
 
 void Table::Create()
 {
-    top_wall = CreatePhysicsBodyRectangle({ WINDOW_WIDTH / 2, 25 }, WINDOW_WIDTH, 50, 1);
-    bottom_wall = CreatePhysicsBodyRectangle({ 0, GetHeight() - 50 }, WINDOW_WIDTH, 50, 1);
+    Vector2 position[6] =
+    {
+        { 25, 25 },
+        { WINDOW_WIDTH / 2, -5 },
+        { WINDOW_WIDTH - 25, 25 },
+        { 25, WINDOW_HEIGHT - 25 - 15 },
+        { WINDOW_WIDTH / 2, WINDOW_HEIGHT + 5 - 15 },
+        { WINDOW_WIDTH - 25, WINDOW_HEIGHT - 25 - 15 }
+    };
 
-    top_wall->enabled = false;
-    bottom_wall->enabled = false;
+    top_wall[0] = CreatePhysicsBodyRectangle({ WINDOW_WIDTH / 4 + 32.5f, 25 }, WINDOW_WIDTH / 2 - 125, 50, 1);
+    top_wall[1] = CreatePhysicsBodyRectangle({ WINDOW_WIDTH - WINDOW_WIDTH / 4 - 32.5f, 25 }, WINDOW_WIDTH / 2 - 125, 50, 1);
+
+    bottom_wall[0] = CreatePhysicsBodyRectangle({ WINDOW_WIDTH / 4 + 32.5f, WINDOW_HEIGHT - 40 }, WINDOW_WIDTH / 2 - 125, 50, 1);
+    bottom_wall[1] = CreatePhysicsBodyRectangle({ WINDOW_WIDTH - WINDOW_WIDTH / 4 - 32.5f, WINDOW_HEIGHT - 40 }, WINDOW_WIDTH / 2 - 125, 50, 1);
+
+    left_wall[0] = CreatePhysicsBodyRectangle({ 25, WINDOW_HEIGHT / 2 - 7.5f }, 50, WINDOW_HEIGHT - 210, 1);
+    left_wall[1] = CreatePhysicsBodyRectangle({ 25, WINDOW_HEIGHT / 2 - 7.5f }, 50, WINDOW_HEIGHT - 210, 1);
+
+    right_wall[0] = CreatePhysicsBodyRectangle({ WINDOW_WIDTH - 25, WINDOW_HEIGHT / 2 - 7.5f }, 50, WINDOW_HEIGHT - 210, 1);
+    right_wall[1] = CreatePhysicsBodyRectangle({ WINDOW_WIDTH - 25, WINDOW_HEIGHT / 2 - 7.5f }, 50, WINDOW_HEIGHT - 210, 1);
+
+    for (int i = 0; i < 6; i++)
+    {
+        hole[i] = CreatePhysicsBodyCircle(position[i], 30, 1);
+        hole[i]->enabled = false;
+    }
+
+    top_wall[0]->enabled = false;
+    top_wall[1]->enabled = false;
+
+    bottom_wall[0]->enabled = false;
+    bottom_wall[1]->enabled = false;
+    
+    left_wall[0]->enabled = false;
+    left_wall[1]->enabled = false;
+
+    right_wall[0]->enabled = false;
+    right_wall[1]->enabled = false;
 
     for (int i = 1; i <= 5; i++)
     {
@@ -73,6 +109,35 @@ void Table::Create()
             });
         }
     }
+
+    whiteBall = new Ball(0, { 350, 350 });
+
+    whiteBall->SetPosition({
+        350 - whiteBall->GetWidth() / 2,
+        350 - whiteBall->GetHeight() / 2
+    });
+
+    stick = new Stick();
 };
 
-void Table::Update() {};
+void Table::Update()
+{
+    // Stick
+    //float dy, dx;
+    //dy = GetMousePosition().x - whiteBall->GetPosition().x;
+    //dx = GetMousePosition().y - whiteBall->GetPosition().y;
+
+    stick->SetPosition({ whiteBall->GetPosition().x - stick->GetWidth() / 2, whiteBall->GetPosition().y - stick->GetHeight() / 2 });
+    //stick->SetRotation(atan2f(dy, dx));
+    //stick->SetRotation();
+};
+
+void Stick::Create()
+{
+    std::cout << "Called Stick::Create()" << std::endl;
+};
+
+void Stick::Update()
+{
+    //SetPosition({ GetMouseX() - GetWidth() / 2, GetMouseY() - GetHeight() / 2 });
+};
