@@ -123,12 +123,13 @@ void Table::Create()
 void Table::Update()
 {
     // Stick
-    //float dy, dx;
-    //dy = GetMousePosition().x - whiteBall->GetPosition().x;
-    //dx = GetMousePosition().y - whiteBall->GetPosition().y;
+    
+    /*float dy, dx;
+    dy = GetMousePosition().x - whiteBall->GetPosition().x;
+    dx = GetMousePosition().y - whiteBall->GetPosition().y;
 
+    stick->SetRotation(atan2f(-dy, dx));*/
     stick->SetPosition({ whiteBall->GetPosition().x - stick->GetWidth() / 2, whiteBall->GetPosition().y - stick->GetHeight() / 2 });
-    //stick->SetRotation(atan2f(dy, dx));
     //stick->SetRotation();
 };
 
