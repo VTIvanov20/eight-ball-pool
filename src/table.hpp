@@ -32,10 +32,7 @@ public:
         sprite_scale_factor = 50.0f / sprite_texture.width;
     }
 
-    virtual ~Ball()
-    {
-        DestroyPhysicsBody(body);
-    }
+    virtual ~Ball() = default;
 
     Vector2 GetPosition();
 
@@ -84,23 +81,7 @@ public:
         sprite_scale_factor = (float)WINDOW_WIDTH / sprite_texture.width;
     }
 
-    virtual ~Table()
-    {
-        delete whiteBall;
-        delete stick;
-        for (int i = 0; i < 2; i++)
-        {
-            DestroyPhysicsBody(top_wall[i]);
-            DestroyPhysicsBody(bottom_wall[i]);
-            DestroyPhysicsBody(left_wall[i]);
-            DestroyPhysicsBody(right_wall[i]);
-        }
-
-        for (int i = 0; i < 6; i++)
-        {
-            DestroyPhysicsBody(hole[i]);
-        }
-    };
+    virtual ~Table() = default;
 
     void Create() override;
     void Update() override;

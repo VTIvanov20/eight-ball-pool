@@ -10,7 +10,7 @@ Vector2 Ball::GetPosition()
 void Ball::Create()
 {
     std::cout << "Called Ball::Create()" << std::endl;
-    body = CreatePhysicsBodyCircle({ sprite_position->x + GetWidth() / 2, sprite_position->y + GetHeight() / 2 }, GetWidth() / 2, 1.0f);
+    body = CreatePhysicsBodyCircle({ sprite_position.x + GetWidth() / 2, sprite_position.y + GetHeight() / 2 }, GetWidth() / 2, 1.0f);
     body->restitution = 1.0f;
     body->dynamicFriction = 0.5f;
     body->staticFriction = 0.5f;

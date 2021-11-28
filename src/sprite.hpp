@@ -7,19 +7,17 @@
 class Sprite : public DrawableManager::Drawable
 {
 protected:
-    Vector2* sprite_position;
+    Vector2 sprite_position;
     Texture2D sprite_texture;
     float sprite_scale_factor;
     float sprite_rotation;
 
 public:
-    Sprite(const char* texture_file_name, Vector2 initial_position, float scale = 1) : Drawable()
+    Sprite(const char* texture_file_name, Vector2 initial_position, float scale = 1.0f, float rotation = 0.0f) : Drawable()
     {
-        sprite_position = new Vector2;
-        sprite_position->x = initial_position.x;
-        sprite_position->y = initial_position.y;
+        sprite_position = initial_position;
         sprite_texture = LoadTexture(texture_file_name);
-        sprite_rotation = 0.0f;
+        sprite_rotation = rotation;
         
         if (sprite_texture.id == 0)
         {
@@ -33,7 +31,6 @@ public:
     virtual ~Sprite()
     {
         UnloadTexture(sprite_texture);
-        delete sprite_position;
     }
 
     void SetScale(float scale);

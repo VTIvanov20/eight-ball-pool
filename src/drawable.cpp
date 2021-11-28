@@ -49,6 +49,7 @@ namespace DrawableManager
         }
 
         drawablePool.clear();
+        currentId = 0;
     }
 
     void DestroyDrawableFromID(int id)
