@@ -219,7 +219,7 @@
 #endif
 
 // TODO: Implement custom TraceLog()
-#define TRACELOG(level, ...) (void)0
+// #define TRACELOG(level, ...) (void)0
 
 //----------------------------------------------------------------------------------
 // Types and Structures Definition
@@ -1148,7 +1148,7 @@ typedef enum { BORDER = 0, BASE, TEXT, OTHER } GuiPropertyElement;
 //----------------------------------------------------------------------------------
 static GuiControlState guiState = GUI_STATE_NORMAL;
 
-static Font guiFont = { 0 };            // Gui current font (WARNING: highly coupled to raylib)
+static Font guiFont {};                 // Gui current font (WARNING: highly coupled to raylib)
 static bool guiLocked = false;          // Gui lock state (no inputs processed)
 static float guiAlpha = 1.0f;           // Gui element transpacency on drawing
 
@@ -1406,7 +1406,7 @@ void GuiLine(Rectangle bounds, const char *text)
     if (text == NULL) GuiDrawRectangle(RAYGUI_CLITERAL(Rectangle){ bounds.x, bounds.y + bounds.height/2, bounds.width, 1 }, 0, BLANK, color);
     else
     {
-        Rectangle textBounds = { 0 };
+        Rectangle textBounds {};
         textBounds.width = (float)GetTextWidth(text);
         textBounds.height = (float)GuiGetStyle(DEFAULT, TEXT_SIZE);
         textBounds.x = bounds.x + LINE_TEXT_PADDING;
@@ -1713,7 +1713,7 @@ bool GuiCheckBox(Rectangle bounds, const char *text, bool checked)
 {
     GuiControlState state = guiState;
 
-    Rectangle textBounds = { 0 };
+    Rectangle textBounds {};
 
     if (text != NULL)
     {
@@ -2055,7 +2055,7 @@ bool GuiSpinner(Rectangle bounds, const char *text, int *value, int minValue, in
     Rectangle leftButtonBound = { (float)bounds.x, (float)bounds.y, (float)GuiGetStyle(SPINNER, SPIN_BUTTON_WIDTH), (float)bounds.height };
     Rectangle rightButtonBound = { (float)bounds.x + bounds.width - GuiGetStyle(SPINNER, SPIN_BUTTON_WIDTH), (float)bounds.y, (float)GuiGetStyle(SPINNER, SPIN_BUTTON_WIDTH), (float)bounds.height };
 
-    Rectangle textBounds = { 0 };
+    Rectangle textBounds {};
     if (text != NULL)
     {
         textBounds.width = (float)GetTextWidth(text);
@@ -2131,7 +2131,7 @@ bool GuiValueBox(Rectangle bounds, const char *text, int *value, int minValue, i
     char textValue[VALUEBOX_MAX_CHARS + 1] = "\0";
     sprintf(textValue, "%i", *value);
 
-    Rectangle textBounds = { 0 };
+    Rectangle textBounds {};
     if (text != NULL)
     {
         textBounds.width = (float)GetTextWidth(text);
@@ -2469,7 +2469,7 @@ float GuiSliderPro(Rectangle bounds, const char *textLeft, const char *textRight
     // Draw left/right text if provided
     if (textLeft != NULL)
     {
-        Rectangle textBounds = { 0 };
+        Rectangle textBounds {};
         textBounds.width = (float)GetTextWidth(textLeft);
         textBounds.height = (float)GuiGetStyle(DEFAULT, TEXT_SIZE);
         textBounds.x = bounds.x - textBounds.width - GuiGetStyle(SLIDER, TEXT_PADDING);
@@ -2480,7 +2480,7 @@ float GuiSliderPro(Rectangle bounds, const char *textLeft, const char *textRight
 
     if (textRight != NULL)
     {
-        Rectangle textBounds = { 0 };
+        Rectangle textBounds {};
         textBounds.width = (float)GetTextWidth(textRight);
         textBounds.height = (float)GuiGetStyle(DEFAULT, TEXT_SIZE);
         textBounds.x = bounds.x + bounds.width + GuiGetStyle(SLIDER, TEXT_PADDING);
@@ -2530,7 +2530,7 @@ float GuiProgressBar(Rectangle bounds, const char *textLeft, const char *textRig
     // Draw left/right text if provided
     if (textLeft != NULL)
     {
-        Rectangle textBounds = { 0 };
+        Rectangle textBounds {};
         textBounds.width = (float)GetTextWidth(textLeft);
         textBounds.height = (float)GuiGetStyle(DEFAULT, TEXT_SIZE);
         textBounds.x = bounds.x - textBounds.width - GuiGetStyle(PROGRESSBAR, TEXT_PADDING);
@@ -2541,7 +2541,7 @@ float GuiProgressBar(Rectangle bounds, const char *textLeft, const char *textRig
 
     if (textRight != NULL)
     {
-        Rectangle textBounds = { 0 };
+        Rectangle textBounds {};
         textBounds.width = (float)GetTextWidth(textRight);
         textBounds.height = (float)GuiGetStyle(DEFAULT, TEXT_SIZE);
         textBounds.x = bounds.x + bounds.width + GuiGetStyle(PROGRESSBAR, TEXT_PADDING);
@@ -2606,14 +2606,14 @@ int GuiScrollBar(Rectangle bounds, int value, int minValue, int maxValue)
     const int spinnerSize = GuiGetStyle(SCROLLBAR, ARROWS_VISIBLE)? (isVertical? (int)bounds.width - 2*GuiGetStyle(SCROLLBAR, BORDER_WIDTH) : (int)bounds.height - 2*GuiGetStyle(SCROLLBAR, BORDER_WIDTH)) : 0;
 
     // Arrow buttons [<] [>] [∧] [∨]
-    Rectangle arrowUpLeft = { 0 };
-    Rectangle arrowDownRight = { 0 };
+    Rectangle arrowUpLeft {};
+    Rectangle arrowDownRight {};
 
     // Actual area of the scrollbar excluding the arrow buttons
-    Rectangle scrollbar = { 0 };
+    Rectangle scrollbar {};
 
     // Slider bar that moves     --[///]-----
-    Rectangle slider = { 0 };
+    Rectangle slider {};
 
     // Normalize value
     if (value > maxValue) value = maxValue;
@@ -2732,7 +2732,7 @@ int GuiListViewEx(Rectangle bounds, const char **text, int count, int *focus, in
     if ((GuiGetStyle(LISTVIEW, LIST_ITEMS_HEIGHT) + GuiGetStyle(LISTVIEW, LIST_ITEMS_PADDING))*count > bounds.height) useScrollBar = true;
 
     // Define base item rectangle [0]
-    Rectangle itemBounds = { 0 };
+    Rectangle itemBounds {};
     itemBounds.x = bounds.x + GuiGetStyle(LISTVIEW, LIST_ITEMS_PADDING);
     itemBounds.y = bounds.y + GuiGetStyle(LISTVIEW, LIST_ITEMS_PADDING) + GuiGetStyle(DEFAULT, BORDER_WIDTH);
     itemBounds.width = bounds.width - 2*GuiGetStyle(LISTVIEW, LIST_ITEMS_PADDING) - GuiGetStyle(DEFAULT, BORDER_WIDTH);
@@ -2870,7 +2870,7 @@ Color GuiColorPanel(Rectangle bounds, Color color)
     const Color colBlack = { 0, 0, 0, 255 };
 
     GuiControlState state = guiState;
-    Vector2 pickerSelector = { 0 };
+    Vector2 pickerSelector {};
 
     Vector3 vcolor = { (float)color.r/255.0f, (float)color.g/255.0f, (float)color.b/255.0f };
     Vector3 hsv = ConvertRGBtoHSV(vcolor);
@@ -3107,7 +3107,7 @@ int GuiMessageBox(Rectangle bounds, const char *title, const char *message, cons
 
     int buttonCount = 0;
     const char **buttonsText = GuiTextSplit(buttons, &buttonCount, NULL);
-    Rectangle buttonBounds = { 0 };
+    Rectangle buttonBounds {};
     buttonBounds.x = bounds.x + MESSAGEBOX_BUTTON_PADDING;
     buttonBounds.y = bounds.y + bounds.height - MESSAGEBOX_BUTTON_HEIGHT - MESSAGEBOX_BUTTON_PADDING;
     buttonBounds.width = (bounds.width - MESSAGEBOX_BUTTON_PADDING*(buttonCount + 1))/buttonCount;
@@ -3115,7 +3115,7 @@ int GuiMessageBox(Rectangle bounds, const char *title, const char *message, cons
 
     Vector2 textSize = MeasureTextEx(guiFont, message, (float)GuiGetStyle(DEFAULT, TEXT_SIZE), 1);
 
-    Rectangle textBounds = { 0 };
+    Rectangle textBounds {};
     textBounds.x = bounds.x + bounds.width/2 - textSize.x/2;
     textBounds.y = bounds.y + WINDOW_STATUSBAR_HEIGHT + (bounds.height - WINDOW_STATUSBAR_HEIGHT - MESSAGEBOX_BUTTON_HEIGHT - MESSAGEBOX_BUTTON_PADDING)/2 - textSize.y/2;
     textBounds.width = textSize.x;
@@ -3162,7 +3162,7 @@ int GuiTextInputBox(Rectangle bounds, const char *title, const char *message, co
 
     int buttonCount = 0;
     const char **buttonsText = GuiTextSplit(buttons, &buttonCount, NULL);
-    Rectangle buttonBounds = { 0 };
+    Rectangle buttonBounds {};
     buttonBounds.x = bounds.x + TEXTINPUTBOX_BUTTON_PADDING;
     buttonBounds.y = bounds.y + bounds.height - TEXTINPUTBOX_BUTTON_HEIGHT - TEXTINPUTBOX_BUTTON_PADDING;
     buttonBounds.width = (bounds.width - TEXTINPUTBOX_BUTTON_PADDING*(buttonCount + 1))/buttonCount;
@@ -3170,7 +3170,7 @@ int GuiTextInputBox(Rectangle bounds, const char *title, const char *message, co
 
     int messageInputHeight = (int)bounds.height - WINDOW_STATUSBAR_HEIGHT - GuiGetStyle(STATUSBAR, BORDER_WIDTH) - TEXTINPUTBOX_BUTTON_HEIGHT - 2*TEXTINPUTBOX_BUTTON_PADDING;
 
-    Rectangle textBounds = { 0 };
+    Rectangle textBounds {};
     if (message != NULL)
     {
         Vector2 textSize = MeasureTextEx(guiFont, message, (float)GuiGetStyle(DEFAULT, TEXT_SIZE), 1);
@@ -3181,7 +3181,7 @@ int GuiTextInputBox(Rectangle bounds, const char *title, const char *message, co
         textBounds.height = textSize.y;
     }
 
-    Rectangle textBoxBounds = { 0 };
+    Rectangle textBoxBounds {};
     textBoxBounds.x = bounds.x + TEXTINPUTBOX_BUTTON_PADDING;
     textBoxBounds.y = bounds.y + WINDOW_STATUSBAR_HEIGHT - TEXTINPUTBOX_HEIGHT/2;
     if (message == NULL) textBoxBounds.y += messageInputHeight/2;
@@ -3322,7 +3322,7 @@ void GuiLoadStyle(const char *fileName)
                         char fontFileName[256] = { 0 };
                         sscanf(buffer, "f %d %s %[^\r\n]s", &fontSize, charmapFileName, fontFileName);
 
-                        Font font = { 0 };
+                        Font font {};
 
                         if (charmapFileName[0] != '0')
                         {
@@ -3408,9 +3408,9 @@ void GuiLoadStyle(const char *fileName)
 
             if (fontDataSize > 0)
             {
-                Font font = { 0 };
+                Font font {};
                 int fontType = 0;   // 0-Normal, 1-SDF
-                Rectangle whiteRec = { 0 };
+                Rectangle whiteRec {};
 
                 fread(&font.baseSize, 1, sizeof(int), rgsFile);
                 fread(&font.glyphCount, 1, sizeof(int), rgsFile);
@@ -3425,7 +3425,7 @@ void GuiLoadStyle(const char *fileName)
 
                 if (fontImageSize > 0)
                 {
-                    Image imFont = { 0 };
+                    Image imFont {};
                     imFont.mipmaps = 1;
                     fread(&imFont.width, 1, sizeof(int), rgsFile);
                     fread(&imFont.height, 1, sizeof(int), rgsFile);
@@ -3728,7 +3728,7 @@ bool GuiCheckIconPixel(int iconId, int x, int y)
 // NOTE: Icon is not considered here
 static int GetTextWidth(const char *text)
 {
-    Vector2 size = { 0 };
+    Vector2 size {};
 
     if ((text != NULL) && (text[0] != '\0'))
     {
@@ -3946,7 +3946,7 @@ static const char **GuiTextSplit(const char *text, int *count, int *textRow)
 // NOTE: Color data should be passed normalized
 static Vector3 ConvertRGBtoHSV(Vector3 rgb)
 {
-    Vector3 hsv = { 0 };
+    Vector3 hsv {};
     float min = 0.0f;
     float max = 0.0f;
     float delta = 0.0f;
@@ -3999,7 +3999,7 @@ static Vector3 ConvertRGBtoHSV(Vector3 rgb)
 // NOTE: Color data should be passed normalized
 static Vector3 ConvertHSVtoRGB(Vector3 hsv)
 {
-    Vector3 rgb = { 0 };
+    Vector3 rgb {};
     float hh = 0.0f, p = 0.0f, q = 0.0f, t = 0.0f, ff = 0.0f;
     long i = 0;
 

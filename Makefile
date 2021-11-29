@@ -8,13 +8,13 @@ CXX=c++
 # Check if make is being ran on Windows or Unix
 ifeq ($(OS),Windows_NT)
 	CXXFLAGS=-I$(IDIR) -Iinclude/ -Llib/
-	ERRFLAGS=-Wall -Wunused-variable -Wextra
 	OUT_EXT=exe
 else
 	CXXFLAGS=-I$(IDIR)
-	ERRFLAGS=-Wall -Wunused-variable -Wextra
 	OUT_EXT=out
 endif
+
+ERRFLAGS=-Wall -Wunused-variable -Wextra -Wno-enum-compare
 
 # Put header files here
 _DEPS=drawable.cpp sprite.cpp table.cpp game_manager.cpp main_menu.cpp main.cpp
