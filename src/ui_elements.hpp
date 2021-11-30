@@ -71,7 +71,6 @@ public:
     };
 
     virtual ~Label() = default;
-
     void Draw() override;
 };
 
