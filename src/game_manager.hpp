@@ -9,6 +9,7 @@
 #include "sprite.hpp"
 #include "table.hpp"
 #include "main_menu.hpp"
+#include "settings_menu.hpp"
 
 #include <physac.h>
 
@@ -29,10 +30,12 @@ namespace GameManager
 
     struct GameState
     {
-        bool sceneUpdate;
-        bool shouldQuit;
+        bool scene_update;
+        bool should_quit;
+        bool audio_uninitialized;
+        float master_volume;
         GameScene scene;
-        Turn currentTurn;
+        Turn current_turn;
     };
 
 
@@ -43,4 +46,7 @@ namespace GameManager
 
     void Quit(); // api function which triggers a boolean telling the program it should quit; meant to be used at any point in the code (unlike functions like initialize and deinitialize)
     void ChangeScene(GameScene scene); // api function which changes the current scene; it is meant to be used at any point in the code
+
+    void ToggleAudio(); // api function which turns audio on or off
+    bool IsAudioOn(); // api function which checks the game manager's last stored master volume and tells if the audio is on or not
 }

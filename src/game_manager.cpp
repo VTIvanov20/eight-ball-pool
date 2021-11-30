@@ -46,7 +46,7 @@ namespace GameManager
             new MainMenu();
             break;
         case GameScene::SETTINGS_MENU:
-            new Sprite("resources/images/stick.png", {0, 0});
+            new SettingsMenu();
             break;
         case GameScene::IN_GAME:
             new Table();
@@ -61,18 +61,30 @@ namespace GameManager
     void Initialize()
     {
         InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE);
+        InitAudioDevice();
+        InitPhysics();
 
         // don't quit on any key
         SetExitKey(0);
 
-        InitPhysics();
+        if (!IsAudioDeviceReady())
+        {
+            std::cout << "INFO: Audio device wasn't initialized properly" << std::endl;
+            state.audio_uninitialized = true;
+        }
+        else state.audio_uninitialized = false;
 
-        state.sceneUpdate = false;
-        state.shouldQuit = false;
+        state.scene_update = false;
+        state.should_quit = false;
         state.scene = GameScene::MAIN_MENU;
+
+        state.master_volume = 100.f;
 
         SetPhysicsGravity(0.0f, 0.0f);
         SetTargetFPS(60);
+
+        if (!state.audio_uninitialized)
+            SetMasterVolume(state.master_volume);
 
         ReinitializeScene();
     }
@@ -80,21 +92,21 @@ namespace GameManager
     void ChangeScene(GameScene scene)
     {
         state.scene = scene;
-        state.sceneUpdate = true;
+        state.scene_update = true;
     }
 
     void Quit()
     {
-        std::cout << "triggered shouldQuit boolean" << std::endl;
-        state.shouldQuit = true;
+        std::cout << "triggered should_quit boolean" << std::endl;
+        state.should_quit = true;
     }
 
     void Update()
     {
-        if (state.sceneUpdate)
+        if (state.scene_update)
         {
             ReinitializeScene();
-            state.sceneUpdate = false;
+            state.scene_update = false;
             std::cout << "INFO: GameManager: Scene Update!" << std::endl;
         }
 
@@ -118,7 +130,6 @@ namespace GameManager
 
             // Draw Mouse Position
             DrawText(TextFormat("%.0f, %.0f", GetMousePosition().x, GetMousePosition().y), 0, WINDOW_HEIGHT - 20, 20, GREEN);
-            
         EndDrawing();
     }
     
@@ -135,6 +146,7 @@ namespace GameManager
         }
 
         ClosePhysics();
+        CloseAudioDevice();
         CloseWindow();
 
         std::cout << "INFO: Goodbye!" << std::endl;
@@ -142,6 +154,33 @@ namespace GameManager
 
     bool ShouldQuit()
     {
-        return state.shouldQuit || WindowShouldClose();
+        return state.should_quit || WindowShouldClose();
+    }
+
+    void ToggleAudio()
+    {
+        if (!state.audio_uninitialized)
+        {
+            if (state.master_volume > 0.0f)
+            {
+                state.master_volume = 0.0f;
+                SetMasterVolume(state.master_volume);
+            }
+            else
+            {
+                state.master_volume = 1.0f;
+                SetMasterVolume(state.master_volume);
+            }
+        }
+    }
+
+    bool IsAudioOn()
+    {
+        if (state.audio_uninitialized) return false;
+        else
+        {
+            if (state.master_volume > 0.0f) return true;
+            else return false;
+        }
     }
 }

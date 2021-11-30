@@ -17,11 +17,11 @@ endif
 ERRFLAGS=-Wall -Wunused-variable -Wextra -Wno-enum-compare
 
 # Put header files here
-_DEPS=drawable.cpp sprite.cpp table.cpp game_manager.cpp main_menu.cpp main.cpp
+_DEPS=drawable.cpp sprite.cpp table.cpp ui_elements.cpp game_manager.cpp main_menu.cpp settings_menu.cpp main.cpp
 DEPS=$(patsubst %, $(IDIR)/%, $(_DEPS))
 
 # Put cpp files but change extension to .o
-_OBJ=drawable.o sprite.o table.o game_manager.o main_menu.o main.o
+_OBJ=drawable.o sprite.o table.o ui_elements.o game_manager.o main_menu.o settings_menu.o main.o
 OBJ=$(patsubst %, $(ODIR)/%, $(_OBJ))
 
 # Libraries
