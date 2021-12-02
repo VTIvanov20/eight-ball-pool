@@ -111,31 +111,46 @@ void Table::Create()
     }
 
     whiteBall = new Ball(0, { 350, 350 });
+    stick = new Stick();
 
     whiteBall->SetPosition({
         350 - whiteBall->GetWidth() / 2,
         350 - whiteBall->GetHeight() / 2
     });
-
-    stick = new Stick();
 };
+
+    float temp[2] = { 0, 0 };
 
 void Table::Update()
 {
     // Stick
-    
-    /*float dy, dx;
-    dy = GetMousePosition().x - whiteBall->GetPosition().x;
-    dx = GetMousePosition().y - whiteBall->GetPosition().y;
 
-    stick->SetRotation(atan2f(-dy, dx));*/
-    stick->SetPosition({ whiteBall->GetPosition().x - stick->GetWidth() / 2, whiteBall->GetPosition().y - stick->GetHeight() / 2 });
-    //stick->SetRotation();
+    if (IsKeyDown(KEY_Q))
+        stick->SetRotation(stick->GetRotation() - 1);
+    
+    if (IsKeyDown(KEY_E))
+        stick->SetRotation(stick->GetRotation() + 1);
+
+    if (IsKeyPressed(KEY_R))
+        stick->SetRotation(0.0f);
+
+    if (abs(stick->GetRotation()) - 360 * floor(abs(stick->GetRotation()) / 360) > 225 && abs(stick->GetRotation()) - 360 * floor(abs(stick->GetRotation()) / 360) <= 315)
+        temp[0] = 15;
+    else
+        temp[0] = 0;
+
+    if (abs(stick->GetRotation()) - 360 * floor(abs(stick->GetRotation()) / 360) >= 135 && abs(stick->GetRotation()) - 360 * floor(abs(stick->GetRotation()) / 360) <= 225)
+        temp[1] = stick->GetHeight();
+    else
+        temp[1] = 0;
+
+    stick->SetPosition({ whiteBall->GetPosition().x - stick->GetWidth() / 64 + 30 + temp[0], whiteBall->GetPosition().y + stick->GetHeight() + temp[1] });
 };
 
 void Stick::Create()
 {
     std::cout << "Called Stick::Create()" << std::endl;
+    SetScale(0.7f);
 };
 
 void Stick::Update()
