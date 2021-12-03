@@ -1,20 +1,13 @@
 #include "table.hpp"
 
-#include <math.h>
-
 Vector2 Ball::GetPosition()
 {
     return { body->position.x - GetWidth() / 2, body->position.y - GetHeight() / 2 };
 }
 
-void Ball::Create()
+void Ball::SetPosition(Vector2 position)
 {
-    std::cout << "Called Ball::Create()" << std::endl;
-    body = CreatePhysicsBodyCircle({ sprite_position.x + GetWidth() / 2, sprite_position.y + GetHeight() / 2 }, GetWidth() / 2, 1.0f);
-    body->restitution = 1.0f;
-    body->dynamicFriction = 0.5f;
-    body->staticFriction = 0.5f;
-    body->enabled = true;
+    body->position = { position.x + GetWidth() / 2, position.y + GetHeight() / 2 };
 }
 
 void Ball::Update()
@@ -27,7 +20,7 @@ void Ball::Draw()
     DrawTextureEx(
         sprite_texture,
         { body->position.x - GetWidth() / 2, body->position.y - GetHeight() / 2 },
-        0.0f,
+        0.f,
         sprite_scale_factor,
         WHITE
     );
@@ -41,6 +34,11 @@ void Ball::Draw()
         GetPosition().x + GetWidth(), GetPosition().y,
         10, WHITE
     );
+}
+
+void Ball::AddForce(Vector2 force)
+{
+    PhysicsAddForce(body, force);
 }
 
 void Table::Create()
@@ -84,68 +82,7 @@ void Table::Create()
 
     right_wall[0]->enabled = false;
     right_wall[1]->enabled = false;
-
-    for (int i = 1; i <= 5; i++)
-    {
-        float j;
-        if (i % 2 == 0)
-            j = 0.5 - i / 2;
-        else
-            j = 0 - i / 2;
-
-        std::cout << j << std::endl;
-            
-        for (; j < (float)i / 2; j++)
-        {
-            balls.push_back(new Ball(i + j, starting_ball_position));
-
-            // gets last element (in iterator) of std::list
-            // converts iterator to type
-            Ball* ballPtr = *(--balls.end());
-
-            ballPtr->SetPosition({
-                starting_ball_position.x - ballPtr->GetWidth() / 2 + ballPtr->GetWidth() * (i - 1) - ballPtr->GetWidth() * 2,
-                starting_ball_position.y - ballPtr->GetHeight() / 2 + j * ballPtr->GetHeight()
-            });
-        }
-    }
-
-    whiteBall = new Ball(0, { 350, 350 });
-    stick = new Stick();
-
-    whiteBall->SetPosition({
-        350 - whiteBall->GetWidth() / 2,
-        350 - whiteBall->GetHeight() / 2
-    });
-};
-
-    float temp[2] = { 0, 0 };
-
-void Table::Update()
-{
-    // Stick
-
-    if (IsKeyDown(KEY_Q))
-        stick->SetRotation(stick->GetRotation() - 1);
-    
-    if (IsKeyDown(KEY_E))
-        stick->SetRotation(stick->GetRotation() + 1);
-
-    if (IsKeyPressed(KEY_R))
-        stick->SetRotation(0.0f);
-
-    if (abs(stick->GetRotation()) - 360 * floor(abs(stick->GetRotation()) / 360) > 225 && abs(stick->GetRotation()) - 360 * floor(abs(stick->GetRotation()) / 360) <= 315)
-        temp[0] = 15;
-    else
-        temp[0] = 0;
-
-    if (abs(stick->GetRotation()) - 360 * floor(abs(stick->GetRotation()) / 360) >= 135 && abs(stick->GetRotation()) - 360 * floor(abs(stick->GetRotation()) / 360) <= 225)
-        temp[1] = stick->GetHeight();
-    else
-        temp[1] = 0;
-
-    stick->SetPosition({ whiteBall->GetPosition().x - stick->GetWidth() / 64 + 30 + temp[0], whiteBall->GetPosition().y + stick->GetHeight() + temp[1] });
-};
+}
 
 void Stick::Create()
 {
@@ -155,5 +92,42 @@ void Stick::Create()
 
 void Stick::Update()
 {
-    //SetPosition({ GetMouseX() - GetWidth() / 2, GetMouseY() - GetHeight() / 2 });
+    if (IsKeyDown(KEY_Q))
+        sprite_rotation--;
+    
+    if (IsKeyDown(KEY_E))
+        sprite_rotation++;
+
+    if (sprite_rotation > 360) sprite_rotation = 0;
+    if (sprite_rotation < 0) sprite_rotation = 359;
+    
+    if (IsKeyDown(KEY_A) && force_amount >= 30.0f)
+        force_amount--;
+    
+    if (IsKeyDown(KEY_D) && force_amount <= 80.0f)
+        force_amount++;
 };
+
+void Stick::Draw()
+{
+    DrawTexturePro(
+        sprite_texture,
+        { 0, 0, (float)sprite_texture.width, (float)sprite_texture.height },
+        { sprite_position.x, sprite_position.y, sprite_texture.width * sprite_scale_factor, sprite_texture.height * sprite_scale_factor },
+        { -force_amount, sprite_texture.height * (sprite_scale_factor / 2.f) },
+        sprite_rotation,
+        WHITE
+    );
+}
+
+void Stick::SetShown(bool value)
+{
+    shown = value;
+}
+
+Vector2 Stick::GetCurrentForce()
+{
+    // TODO: IMPLEMENT PROPERLY
+    float force = force_amount * 50;
+    return { force - sprite_rotation / 360 * force, 0.f - sprite_rotation };
+}

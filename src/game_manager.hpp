@@ -10,12 +10,13 @@
 #include "table.hpp"
 #include "main_menu.hpp"
 #include "settings_menu.hpp"
+#include "game_scene.hpp"
 
 #include <physac.h>
 
 namespace GameManager
 {
-    enum GameScene
+    enum Scene
     {
         MAIN_MENU = 0,
         SETTINGS_MENU = 1,
@@ -34,7 +35,7 @@ namespace GameManager
         bool should_quit;
         bool audio_uninitialized;
         float master_volume;
-        GameScene scene;
+        Scene scene;
         Turn current_turn;
     };
 
@@ -45,7 +46,7 @@ namespace GameManager
     bool ShouldQuit(); // meant to be used in main.cpp; similar to the WindowShouldClose function in raylib.h
 
     void Quit(); // api function which triggers a boolean telling the program it should quit; meant to be used at any point in the code (unlike functions like initialize and deinitialize)
-    void ChangeScene(GameScene scene); // api function which changes the current scene; it is meant to be used at any point in the code
+    void ChangeScene(Scene scene); // api function which changes the current scene; it is meant to be used at any point in the code
 
     void ToggleAudio(); // api function which turns audio on or off
     bool IsAudioOn(); // api function which checks the game manager's last stored master volume and tells if the audio is on or not

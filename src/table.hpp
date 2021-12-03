@@ -30,13 +30,20 @@ public:
         std::cout << "Called Ball()" << std::endl;
         ball_number = number;
         sprite_scale_factor = 50.0f / sprite_texture.width;
+
+        body = CreatePhysicsBodyCircle({ sprite_position.x + GetWidth() / 2, sprite_position.y + GetHeight() / 2 }, GetWidth() / 2, .5f);
+        body->restitution = 1.0f;
+        body->dynamicFriction = 0.5f;
+        body->staticFriction = 0.5f;
+        body->enabled = true;
     }
 
     virtual ~Ball() = default;
 
     Vector2 GetPosition();
+    void SetPosition(Vector2 pos);
+    void AddForce(Vector2 force);
 
-    void Create() override;
     void Update() override;
     void Draw() override;
 };
@@ -45,34 +52,34 @@ class Stick : public Sprite
 {
 private:
     const Vector2 starting_stick_position = { WINDOW_WIDTH / 2 - 340, WINDOW_HEIGHT / 2 };
+    float force_amount;
+    bool shown;
 
 public:
-    Stick() : Sprite("resources/images/stick.png", {})
+    Stick(Vector2 position) : Sprite("resources/images/stick.png", position)
     {
-        sprite_scale_factor = (float)WINDOW_WIDTH / sprite_texture.width;
+        sprite_scale_factor = 0.8f;
+        force_amount = 30.f;
+        shown = true;
     }
 
     virtual ~Stick() = default;
 
+    void SetShown(bool value);
+    Vector2 GetCurrentForce();
+
     void Create() override;
     void Update() override;
+    void Draw() override;
 };
 
 class Table : public Sprite
 {
 private:
-    std::list<Ball*> balls;
-    Ball* whiteBall;
-
-    Stick* stick;
-
-    const Vector2 starting_ball_position = {930, 350};
-
     PhysicsBody top_wall[2];
     PhysicsBody bottom_wall[2];
     PhysicsBody left_wall[2];
     PhysicsBody right_wall[2];
-
     PhysicsBody hole[6];
 
 public:
@@ -81,8 +88,6 @@ public:
         sprite_scale_factor = (float)WINDOW_WIDTH / sprite_texture.width;
     }
 
-    virtual ~Table() = default;
-
     void Create() override;
-    void Update() override;
 };
+

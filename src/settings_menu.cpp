@@ -16,7 +16,7 @@ void SettingsMenu::Update()
         {
         case 0:
             if (static_cast<Button*>(element)->IsClicked())
-                GameManager::ChangeScene(GameManager::GameScene::MAIN_MENU);
+                GameManager::ChangeScene(GameManager::Scene::MAIN_MENU);
             break;
         case 1:
             if (static_cast<CheckBox*>(element)->IsChecked() && !IsWindowFullscreen())

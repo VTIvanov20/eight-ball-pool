@@ -18,10 +18,10 @@ void MainMenu::Update()
             switch(idx)
             {
             case 0:
-                GameManager::ChangeScene(GameManager::GameScene::IN_GAME);
+                GameManager::ChangeScene(GameManager::Scene::IN_GAME);
                 break;
             case 1:
-                GameManager::ChangeScene(GameManager::GameScene::SETTINGS_MENU);
+                GameManager::ChangeScene(GameManager::Scene::SETTINGS_MENU);
                 break;
             case 2:
                 GameManager::Quit();

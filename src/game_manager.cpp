@@ -42,14 +42,14 @@ namespace GameManager
 
         switch(state.scene)
         {
-        case GameScene::MAIN_MENU:
+        case Scene::MAIN_MENU:
             new MainMenu();
             break;
-        case GameScene::SETTINGS_MENU:
+        case Scene::SETTINGS_MENU:
             new SettingsMenu();
             break;
-        case GameScene::IN_GAME:
-            new Table();
+        case Scene::IN_GAME:
+            new GameScene();
             break;
         default:
             break;
@@ -76,7 +76,7 @@ namespace GameManager
 
         state.scene_update = false;
         state.should_quit = false;
-        state.scene = GameScene::MAIN_MENU;
+        state.scene = Scene::MAIN_MENU;
 
         state.master_volume = 100.f;
 
@@ -89,7 +89,7 @@ namespace GameManager
         ReinitializeScene();
     }
 
-    void ChangeScene(GameScene scene)
+    void ChangeScene(Scene scene)
     {
         state.scene = scene;
         state.scene_update = true;
@@ -114,7 +114,7 @@ namespace GameManager
             ToggleFullscreen();
         
         if (IsKeyPressed(KEY_ESCAPE))
-            ChangeScene(GameScene::MAIN_MENU);
+            ChangeScene(Scene::MAIN_MENU);
         
         BeginDrawing();
             ClearBackground(BLACK);
