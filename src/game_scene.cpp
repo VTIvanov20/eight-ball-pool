@@ -4,6 +4,14 @@ void GameScene::Create()
 {
     new Table();
     
+    int index = 0;
+    int number;
+    int placed[20];
+
+    bool isPlaced = false;
+
+    srand(time(0));
+
     for (int i = 1; i <= 5; i++)
     {
         float j;
@@ -14,7 +22,26 @@ void GameScene::Create()
             
         for (; j < (float)i / 2; j++)
         {
-            balls.push_back(new Ball(i + j, starting_ball_position));
+            if (index == 4)
+                balls.push_back(new Ball(8, starting_ball_position));
+            else
+            {
+                do {
+                    isPlaced = false;
+                    if (index == 0 || index == 1 || index == 5 || index == 6 || index == 8 || index == 12 || index == 14)
+                        number = rand() % 7 + 9;
+                    else
+                        number = rand() % 7 + 1;
+                    for (int i = 0; i < index; i++)
+                    {
+                        if (placed[i] == number)
+                            isPlaced = true;
+                    }
+                } while (isPlaced);
+                balls.push_back(new Ball(number, starting_ball_position));
+                placed[index] = number;
+            }
+            index++;
 
             // gets last element (in iterator) of std::list
             // converts iterator to type

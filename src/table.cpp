@@ -22,15 +22,33 @@ void Ball::Update()
 
 void Ball::Draw()
 {
-    std::string colors[100] = {};
+    Color colors[100] = { WHITE, YELLOW, BLUE, RED, PURPLE, ORANGE, GREEN, BROWN, BLACK, YELLOW, BLUE, RED, PURPLE, ORANGE, GREEN, BROWN };
 
     DrawTextureEx(
         sprite_texture,
         { body->position.x - GetWidth() / 2, body->position.y - GetHeight() / 2 },
         0.f,
         sprite_scale_factor,
-        WHITE
+        colors[ball_number]
     );
+
+    if (ball_number != 0)
+    {
+        DrawCircle(
+            GetPosition().x + GetWidth() / 2, GetPosition().y + GetHeight() / 2,
+            10,
+            WHITE
+        );
+
+        DrawText(
+            TextFormat(
+                "%i",
+                ball_number
+            ),
+            GetPosition().x + GetWidth() / 2 - 2.5, GetPosition().y + GetHeight() / 2 - 5,
+            10, BLACK
+        );
+    }
 
     DrawText(
         TextFormat(
