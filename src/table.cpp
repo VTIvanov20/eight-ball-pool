@@ -5,6 +5,11 @@ Vector2 Ball::GetPosition()
     return { body->position.x - GetWidth() / 2, body->position.y - GetHeight() / 2 };
 }
 
+Vector2 Ball::GetVelocity()
+{
+    return { body->velocity.x, body->velocity.y };
+}
+
 void Ball::SetPosition(Vector2 position)
 {
     body->position = { position.x + GetWidth() / 2, position.y + GetHeight() / 2 };
@@ -17,6 +22,8 @@ void Ball::Update()
 
 void Ball::Draw()
 {
+    std::string colors[100] = {};
+
     DrawTextureEx(
         sprite_texture,
         { body->position.x - GetWidth() / 2, body->position.y - GetHeight() / 2 },
@@ -88,36 +95,54 @@ void Stick::Create()
 {
     std::cout << "Called Stick::Create()" << std::endl;
     SetScale(0.7f);
+    SetRotation(180.0f);
 };
 
 void Stick::Update()
 {
-    if (IsKeyDown(KEY_Q))
+    if (IsKeyDown(KEY_Q) && shown)
         sprite_rotation--;
     
-    if (IsKeyDown(KEY_E))
+    if (IsKeyDown(KEY_E) && shown)
         sprite_rotation++;
+
+    if (IsKeyPressed(KEY_F1) && shown)
+        SetRotation(0.0);
+    
+    if (IsKeyPressed(KEY_F2) && shown)
+        SetRotation(90.0);
+
+    if (IsKeyPressed(KEY_F3) && shown)
+        SetRotation(180.0);
+    
+    if (IsKeyPressed(KEY_F4) && shown)
+        SetRotation(270.0);
 
     if (sprite_rotation > 360) sprite_rotation = 0;
     if (sprite_rotation < 0) sprite_rotation = 359;
     
-    if (IsKeyDown(KEY_A) && force_amount >= 30.0f)
+    if (IsKeyDown(KEY_A) && force_amount >= 30.0f && shown)
         force_amount--;
     
-    if (IsKeyDown(KEY_D) && force_amount <= 80.0f)
+    if (IsKeyDown(KEY_D) && force_amount <= 80.0f && shown)
         force_amount++;
 };
 
 void Stick::Draw()
 {
-    DrawTexturePro(
-        sprite_texture,
-        { 0, 0, (float)sprite_texture.width, (float)sprite_texture.height },
-        { sprite_position.x, sprite_position.y, sprite_texture.width * sprite_scale_factor, sprite_texture.height * sprite_scale_factor },
-        { -force_amount, sprite_texture.height * (sprite_scale_factor / 2.f) },
-        sprite_rotation,
-        WHITE
-    );
+    if (shown)
+    {
+        DrawLineV(GetPosition(), { GetCurrentForce().x, GetCurrentForce().y + 350 }, BLUE);
+
+        DrawTexturePro(
+            sprite_texture,
+            { 0, 0, (float)sprite_texture.width, (float)sprite_texture.height },
+            { sprite_position.x, sprite_position.y, sprite_texture.width * sprite_scale_factor, sprite_texture.height * sprite_scale_factor },
+            { -force_amount, sprite_texture.height * (sprite_scale_factor / 2.f) },
+            sprite_rotation,
+            WHITE
+        );
+    }
 }
 
 void Stick::SetShown(bool value)
@@ -125,9 +150,26 @@ void Stick::SetShown(bool value)
     shown = value;
 }
 
+void Stick::SetForce(float value)
+{
+    force_amount = value;
+}
+
+bool Stick::GetShown()
+{
+    return shown;
+}
+
 Vector2 Stick::GetCurrentForce()
 {
     // TODO: IMPLEMENT PROPERLY
-    float force = force_amount * 50;
-    return { force - sprite_rotation / 360 * force, 0.f - sprite_rotation };
+    float factor = force_amount / 30;
+    float force = force_amount * 50 * factor;
+
+    if (sprite_rotation < 90)                            return { 0.f + (sprite_rotation - 90) / 90 * force, -force + sprite_rotation / 90 * force };
+    if (sprite_rotation >= 90 && sprite_rotation < 180)  return { 0.f + (sprite_rotation - 90) / 90 * force, sprite_rotation / 180 * force };
+    if (sprite_rotation >= 180 && sprite_rotation < 270) return { 0.f + (sprite_rotation - 90) / 90 * force, force - sprite_rotation / 270 * force };
+    if (sprite_rotation >= 270)                          return { 0.f + (sprite_rotation - 90) / 90 * force, sprite_rotation / 360 * -force };
+
+    return { 0, 0 };
 }

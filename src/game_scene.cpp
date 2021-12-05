@@ -38,9 +38,20 @@ void GameScene::Create()
 
 void GameScene::Update()
 {
-    // Stick
+    // Stick Position
     Vector2 white_ball_pos = white_ball->GetPosition();
     stick->SetPosition({ white_ball_pos.x + white_ball->GetWidth() / 2, white_ball_pos.y + white_ball->GetHeight() / 2 });
 
-    // TODO: IMPLEMENT FORCE ADDING TO WHITE BALL PROPERLY
+    if (IsKeyPressed(KEY_SPACE) && stick->GetShown())
+    {
+        // Ball
+        white_ball->AddForce(stick->GetCurrentForce());
+
+        // Stick
+        stick->SetRotation(0.0f);
+        stick->SetForce(30.0f);
+    }
+
+    if (white_ball->GetVelocity().x == 0 && white_ball->GetVelocity().y == 0) stick->SetShown(true);
+    else stick->SetShown(false);
 };

@@ -41,6 +41,7 @@ public:
     virtual ~Ball() = default;
 
     Vector2 GetPosition();
+    Vector2 GetVelocity();
     void SetPosition(Vector2 pos);
     void AddForce(Vector2 force);
 
@@ -66,6 +67,8 @@ public:
     virtual ~Stick() = default;
 
     void SetShown(bool value);
+    void SetForce(float value);
+    bool GetShown();
     Vector2 GetCurrentForce();
 
     void Create() override;
@@ -80,6 +83,7 @@ private:
     PhysicsBody bottom_wall[2];
     PhysicsBody left_wall[2];
     PhysicsBody right_wall[2];
+
     PhysicsBody hole[6];
 
 public:
