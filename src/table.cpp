@@ -22,7 +22,24 @@ void Ball::Update()
 
 void Ball::Draw()
 {
-    Color colors[100] = { WHITE, YELLOW, BLUE, RED, PURPLE, ORANGE, GREEN, BROWN, BLACK, YELLOW, BLUE, RED, PURPLE, ORANGE, GREEN, BROWN };
+    Color colors[100] = {
+        WHITE,
+        { 255, 240, 0, 255 },
+        { 72, 114, 212, 255 },
+        { 255, 61, 61, 255 },
+        { 86, 0, 123, 255 },
+        { 254, 151, 54, 255 },
+        { 22, 121, 57, 255 },
+        { 140, 32, 20, 255 },
+        BLACK,
+        { 255, 240, 0, 255 },
+        { 72, 114, 212, 255 },
+        { 255, 61, 61, 255 },
+        { 86, 0, 123, 255 },
+        { 254, 151, 54, 255 },
+        { 22, 121, 57, 255 },
+        { 140, 32, 20, 255 }
+    };
 
     DrawTextureEx(
         sprite_texture,

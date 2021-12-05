@@ -1,3 +1,3 @@
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
-#define WINDOW_TITLE "game"
+#define WINDOW_TITLE "8 Ball Pool"

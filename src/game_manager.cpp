@@ -64,6 +64,8 @@ namespace GameManager
         InitAudioDevice();
         InitPhysics();
 
+        SetWindowIcon(LoadImage("resources/images/icon.png"));
+
         // don't quit on any key
         SetExitKey(0);
 
