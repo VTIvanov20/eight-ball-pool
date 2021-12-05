@@ -89,6 +89,18 @@ void Table::Create()
 
     right_wall[0]->enabled = false;
     right_wall[1]->enabled = false;
+
+    top_wall[0]->restitution = 1;
+    top_wall[1]->restitution = 1;
+
+    bottom_wall[0]->restitution = 1;
+    bottom_wall[1]->restitution = 1;
+    
+    left_wall[0]->restitution = 1;
+    left_wall[1]->restitution = 1;
+
+    right_wall[0]->restitution = 1;
+    right_wall[1]->restitution = 1;
 }
 
 void Stick::Create()
@@ -132,7 +144,8 @@ void Stick::Draw()
 {
     if (shown)
     {
-        DrawLineV(GetPosition(), { GetCurrentForce().x, GetCurrentForce().y + 350 }, BLUE);
+        DrawLineV(GetPosition(), { GetCurrentForce().x + GetPosition().x, GetCurrentForce().y + GetPosition().y }, BLUE);
+        // std::cout << GetCurrentForce().x << " " << GetCurrentForce().y << std::endl;
 
         DrawTexturePro(
             sprite_texture,
@@ -162,14 +175,13 @@ bool Stick::GetShown()
 
 Vector2 Stick::GetCurrentForce()
 {
-    // TODO: IMPLEMENT PROPERLY
     float factor = force_amount / 30;
     float force = force_amount * 50 * factor;
 
-    if (sprite_rotation < 90)                            return { 0.f + (sprite_rotation - 90) / 90 * force, -force + sprite_rotation / 90 * force };
-    if (sprite_rotation >= 90 && sprite_rotation < 180)  return { 0.f + (sprite_rotation - 90) / 90 * force, sprite_rotation / 180 * force };
-    if (sprite_rotation >= 180 && sprite_rotation < 270) return { 0.f + (sprite_rotation - 90) / 90 * force, force - sprite_rotation / 270 * force };
-    if (sprite_rotation >= 270)                          return { 0.f + (sprite_rotation - 90) / 90 * force, sprite_rotation / 360 * -force };
+    if (sprite_rotation < 90)                            return { (sprite_rotation - 90) / 90 * force, sprite_rotation / 90 * -force };
+    if (sprite_rotation >= 90 && sprite_rotation < 180)  return { (sprite_rotation - 90) / 90 * force, (sprite_rotation - 180) / 90 * force };
+    if (sprite_rotation >= 180 && sprite_rotation < 270) return { (90 - (sprite_rotation - 180)) / 90 * force, (sprite_rotation - 180) / 90 * force };
+    if (sprite_rotation >= 270)                          return { (90 - (sprite_rotation - 180)) / 90 * force, (90 - (sprite_rotation - 270)) / 90 * force };
 
     return { 0, 0 };
 }
