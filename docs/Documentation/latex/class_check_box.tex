@@ -1,0 +1,102 @@
+\hypertarget{class_check_box}{}\doxysection{Check\+Box Class Reference}
+\label{class_check_box}\index{CheckBox@{CheckBox}}
+
+
+{\ttfamily \#include $<$ui\+\_\+elements.\+hpp$>$}
+
+Inheritance diagram for Check\+Box\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_check_box}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_check_box_ad09def439f2f6497335514c7b8613977}{Check\+Box}} (const char $\ast$text, Rectangle \mbox{\hyperlink{class_u_i_element_a466ccfeb5c36377aa9e4be9343d0b670}{bounds}}, float \mbox{\hyperlink{class_u_i_element_a3c78c939c58c4fcbd8eb6b995adbd71d}{rotation}}, bool checked=false)
+\item 
+virtual \mbox{\hyperlink{class_check_box_a9582afbb1ee2e515492adb7f8d74ff71}{$\sim$\+Check\+Box}} ()=default
+\item 
+void \mbox{\hyperlink{class_check_box_a271ec32c1fa895b19179380faeb4c772}{Draw}} () override
+\begin{DoxyCompactList}\small\item\em Draws the sprites. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_check_box_a364cdde2bf757ee40ac27fc08e810069}{Is\+Checked}} ()
+\begin{DoxyCompactList}\small\item\em Checks whether or not any of the checkboxes are checked. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_check_box_a06b797c3fdabf103b50bf6b288c95876}{Set\+Checked}} (bool value)
+\begin{DoxyCompactList}\small\item\em Sets the \char`\"{}\+Checked\char`\"{} status of the boxes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{class_check_box_afb79eb0ba0c1a31f1a42635f5253545f}{placeholder\+\_\+text}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_check_box_ad09def439f2f6497335514c7b8613977}\label{class_check_box_ad09def439f2f6497335514c7b8613977}} 
+\index{CheckBox@{CheckBox}!CheckBox@{CheckBox}}
+\index{CheckBox@{CheckBox}!CheckBox@{CheckBox}}
+\doxysubsubsection{\texorpdfstring{CheckBox()}{CheckBox()}}
+{\footnotesize\ttfamily Check\+Box\+::\+Check\+Box (\begin{DoxyParamCaption}\item[{const char $\ast$}]{text,  }\item[{Rectangle}]{bounds,  }\item[{float}]{rotation,  }\item[{bool}]{checked = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_check_box_a9582afbb1ee2e515492adb7f8d74ff71}\label{class_check_box_a9582afbb1ee2e515492adb7f8d74ff71}} 
+\index{CheckBox@{CheckBox}!````~CheckBox@{$\sim$CheckBox}}
+\index{````~CheckBox@{$\sim$CheckBox}!CheckBox@{CheckBox}}
+\doxysubsubsection{\texorpdfstring{$\sim$CheckBox()}{~CheckBox()}}
+{\footnotesize\ttfamily virtual Check\+Box\+::$\sim$\+Check\+Box (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_check_box_a271ec32c1fa895b19179380faeb4c772}\label{class_check_box_a271ec32c1fa895b19179380faeb4c772}} 
+\index{CheckBox@{CheckBox}!Draw@{Draw}}
+\index{Draw@{Draw}!CheckBox@{CheckBox}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Check\+Box\+::\+Draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draws the sprites. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_drawable_manager_1_1_drawable_a3bebfc48f7ebda143664e8e2bc8a6b15}{Drawable\+Manager\+::\+Drawable}}.
+
+\mbox{\Hypertarget{class_check_box_a364cdde2bf757ee40ac27fc08e810069}\label{class_check_box_a364cdde2bf757ee40ac27fc08e810069}} 
+\index{CheckBox@{CheckBox}!IsChecked@{IsChecked}}
+\index{IsChecked@{IsChecked}!CheckBox@{CheckBox}}
+\doxysubsubsection{\texorpdfstring{IsChecked()}{IsChecked()}}
+{\footnotesize\ttfamily bool Check\+Box\+::\+Is\+Checked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks whether or not any of the checkboxes are checked. 
+
+\begin{DoxyReturn}{Returns}
+bool (if the box checked) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_check_box_a06b797c3fdabf103b50bf6b288c95876}\label{class_check_box_a06b797c3fdabf103b50bf6b288c95876}} 
+\index{CheckBox@{CheckBox}!SetChecked@{SetChecked}}
+\index{SetChecked@{SetChecked}!CheckBox@{CheckBox}}
+\doxysubsubsection{\texorpdfstring{SetChecked()}{SetChecked()}}
+{\footnotesize\ttfamily void Check\+Box\+::\+Set\+Checked (\begin{DoxyParamCaption}\item[{bool}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets the \char`\"{}\+Checked\char`\"{} status of the boxes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & This describes the output from the \mbox{\hyperlink{class_check_box_a364cdde2bf757ee40ac27fc08e810069}{Is\+Checked()}} function\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_check_box_a364cdde2bf757ee40ac27fc08e810069}{Is\+Checked()}} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_check_box_afb79eb0ba0c1a31f1a42635f5253545f}\label{class_check_box_afb79eb0ba0c1a31f1a42635f5253545f}} 
+\index{CheckBox@{CheckBox}!placeholder\_text@{placeholder\_text}}
+\index{placeholder\_text@{placeholder\_text}!CheckBox@{CheckBox}}
+\doxysubsubsection{\texorpdfstring{placeholder\_text}{placeholder\_text}}
+{\footnotesize\ttfamily const char$\ast$ Check\+Box\+::placeholder\+\_\+text\hspace{0.3cm}{\ttfamily [protected]}}
+

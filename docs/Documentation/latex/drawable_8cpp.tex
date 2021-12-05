@@ -1,0 +1,30 @@
+\hypertarget{drawable_8cpp}{}\doxysection{src/drawable.cpp File Reference}
+\label{drawable_8cpp}\index{src/drawable.cpp@{src/drawable.cpp}}
+{\ttfamily \#include \char`\"{}drawable.\+hpp\char`\"{}}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_drawable_manager}{Drawable\+Manager}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_drawable_manager_ad8cfa460b50c729f1a9465c59c8b620c}{Drawable\+Manager\+::\+Create\+All}} ()
+\begin{DoxyCompactList}\small\item\em Calls the Create() function for every \mbox{\hyperlink{class_drawable_manager_1_1_drawable}{Drawable}} in the drawable\+Pool. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_drawable_manager_aa6827c005fae0a2d9259a522d25bd6ee}{Drawable\+Manager\+::\+Update\+All}} ()
+\begin{DoxyCompactList}\small\item\em Calls the \mbox{\hyperlink{namespace_game_manager_af3bb4452ac262ec8a68dcc3eea2f0124}{Update()}} function for every \mbox{\hyperlink{class_drawable_manager_1_1_drawable}{Drawable}} in the drawable\+Pool. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_drawable_manager_afd00bb2ccf0584e40942a726cb0fdd87}{Drawable\+Manager\+::\+Draw\+All}} ()
+\begin{DoxyCompactList}\small\item\em Calls the Draw() function for every \mbox{\hyperlink{class_drawable_manager_1_1_drawable}{Drawable}} in the drawable\+Pool. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_drawable_manager_adb31226a0e6c99ca8ee91e7bf9a882e9}{Drawable\+Manager\+::\+Destroy\+All\+Drawables}} ()
+\begin{DoxyCompactList}\small\item\em Destroys every \mbox{\hyperlink{class_drawable_manager_1_1_drawable}{Drawable}} in the drawable\+Pool and clears drawable\+Pool. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_drawable_manager_a34d5971cb7b870e4b5b5f8626eebe207}{Drawable\+Manager\+::\+Destroy\+Drawable\+From\+ID}} (int id)
+\begin{DoxyCompactList}\small\item\em Iterates through drawable\+Pool and destroys the \mbox{\hyperlink{class_drawable_manager_1_1_drawable}{Drawable}} corresponding to the ID. \end{DoxyCompactList}\item 
+Drawable $\ast$ \mbox{\hyperlink{namespace_drawable_manager_aaf055b95106373e1aeca163890c94534}{Drawable\+Manager\+::\+Get\+Drawable\+From\+ID}} (int id)
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_drawable_manager_1_1_drawable}{Drawable}} From ID object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::list$<$ Drawable $\ast$ $>$ \mbox{\hyperlink{namespace_drawable_manager_a097f50fdaeee47db8c6962d69d9a47b8}{Drawable\+Manager\+::drawable\+Pool}}
+\item 
+int \mbox{\hyperlink{namespace_drawable_manager_ac04cbf5bc6d170d2b83867438a5cb39c}{Drawable\+Manager\+::current\+Id}} = 0
+\end{DoxyCompactItemize}

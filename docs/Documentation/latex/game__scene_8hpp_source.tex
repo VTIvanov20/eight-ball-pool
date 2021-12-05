@@ -1,0 +1,30 @@
+\hypertarget{game__scene_8hpp_source}{}\doxysection{game\+\_\+scene.\+hpp}
+\label{game__scene_8hpp_source}\index{src/game\_scene.hpp@{src/game\_scene.hpp}}
+\mbox{\hyperlink{game__scene_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{drawable_8hpp}{drawable.hpp}}"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{table_8hpp}{table.hpp}}"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_game_scene}{GameScene}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_drawable_manager_1_1_drawable}{DrawableManager::Drawable}}}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8 \textcolor{keyword}{private}:}
+\DoxyCodeLine{9     std::list<Ball*> balls;}
+\DoxyCodeLine{10     \mbox{\hyperlink{class_ball}{Ball}}* white\_ball;}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \mbox{\hyperlink{class_stick}{Stick}}* stick;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keyword}{const} Vector2 starting\_ball\_position = \{930, 350\};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{public}:}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_game_scene_ac53cc300c8896048c0e21c67e49681b9}{GameScene}}() : \mbox{\hyperlink{class_drawable_manager_1_1_drawable_a6931feed795bb6dc15637fd487548816}{Drawable}}()}
+\DoxyCodeLine{18     \{\}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_game_scene_a570c2b1406317e88b7059e981fd347fc}{\string~GameScene}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_scene_a77070ba97bedd893d863866d74e50dc4}{Create}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_scene_abcecddeb12cf3cd8e927235c5217f8a3}{Update}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{24 \};}
+
+\end{DoxyCode}

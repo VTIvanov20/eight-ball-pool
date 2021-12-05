@@ -1,0 +1,32 @@
+\hypertarget{main__menu_8hpp_source}{}\doxysection{main\+\_\+menu.\+hpp}
+\label{main__menu_8hpp_source}\index{src/main\_menu.hpp@{src/main\_menu.hpp}}
+\mbox{\hyperlink{main__menu_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{drawable_8hpp}{drawable.hpp}}"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{ui__elements_8hpp}{ui\_elements.hpp}}"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{game__manager_8hpp}{game\_manager.hpp}}"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{config_8h}{config.h}}"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <raygui.h>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <raylib.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_main_menu}{MainMenu}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_drawable_manager_1_1_drawable}{DrawableManager::Drawable}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16 \textcolor{keyword}{private}:}
+\DoxyCodeLine{17     std::list<Button*> buttons;}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20     \mbox{\hyperlink{class_main_menu_a39f5824be68655595bb0a06be900a9a8}{MainMenu}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{21     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_main_menu_a9b7627df1b6be671d0f12dc1cab393f7}{\string~MainMenu}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_main_menu_a33ba682cca1b17bfe63158cbe0389222}{Create}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_main_menu_a91b922d22530a2abbd0e475ffff008ee}{Update}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{32 \};}
+
+\end{DoxyCode}

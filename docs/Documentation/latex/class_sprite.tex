@@ -1,0 +1,207 @@
+\hypertarget{class_sprite}{}\doxysection{Sprite Class Reference}
+\label{class_sprite}\index{Sprite@{Sprite}}
+
+
+{\ttfamily \#include $<$sprite.\+hpp$>$}
+
+Inheritance diagram for Sprite\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_sprite}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sprite_aca987e006a055cf96f245dd949f1fa07}{Sprite}} (const char $\ast$texture\+\_\+file\+\_\+name, Vector2 initial\+\_\+position, float scale=1.\+0f, float rotation=0.\+0f)
+\item 
+virtual \mbox{\hyperlink{class_sprite_aff0448963fc0515aad87ac0cce6f8bc2}{$\sim$\+Sprite}} ()
+\item 
+void \mbox{\hyperlink{class_sprite_a54d18a18383575b04f397f5bec3113d0}{Set\+Scale}} (float scale)
+\begin{DoxyCompactList}\small\item\em Sets the scale of the sprites. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_a193d51105ebd4cdc129156a9bb8cf130}{Set\+Position}} (Vector2 position)
+\begin{DoxyCompactList}\small\item\em Sets the position of the sprites. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_a5d9dd4cafae7491cfffb48b82c2dd52d}{Set\+Rotation}} (float rotation)
+\begin{DoxyCompactList}\small\item\em Sets the rotation of the sprites. \end{DoxyCompactList}\item 
+Vector2 \mbox{\hyperlink{class_sprite_abc266c5dc4ca8d4c4ff11b4eea3992b8}{Get\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Gets the position of the sprites. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_sprite_a3a57dd81cb543ceb10be96a79169da1a}{Get\+Width}} ()
+\begin{DoxyCompactList}\small\item\em Gets the width of the sprites. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_sprite_a85869aec5a58d19089fa322efc7cef80}{Get\+Height}} ()
+\begin{DoxyCompactList}\small\item\em Gets the height of the sprites. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_sprite_a890d5da0484351bfc69869c1debe9747}{Get\+Rotation}} ()
+\begin{DoxyCompactList}\small\item\em Gets the exact rotation of the sprites. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_a19dae127e873faf0adf984210bb5edad}{Draw}} () override
+\begin{DoxyCompactList}\small\item\em Draws the sprites. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Vector2 \mbox{\hyperlink{class_sprite_a2bca7fc096d73323f6984657f7e9b75c}{sprite\+\_\+position}}
+\item 
+Texture2D \mbox{\hyperlink{class_sprite_aebf55b57f4adf0787931a1fed0d695a1}{sprite\+\_\+texture}}
+\item 
+float \mbox{\hyperlink{class_sprite_a7dd9b4dfd0bc7abbf2b321665411be22}{sprite\+\_\+scale\+\_\+factor}}
+\item 
+float \mbox{\hyperlink{class_sprite_ab2b03801f7d1eb2ae0e9ac41caeb38c1}{sprite\+\_\+rotation}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sprite_aca987e006a055cf96f245dd949f1fa07}\label{class_sprite_aca987e006a055cf96f245dd949f1fa07}} 
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{Sprite()}{Sprite()}}
+{\footnotesize\ttfamily Sprite\+::\+Sprite (\begin{DoxyParamCaption}\item[{const char $\ast$}]{texture\+\_\+file\+\_\+name,  }\item[{Vector2}]{initial\+\_\+position,  }\item[{float}]{scale = {\ttfamily 1.0f},  }\item[{float}]{rotation = {\ttfamily 0.0f} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_sprite_aff0448963fc0515aad87ac0cce6f8bc2}\label{class_sprite_aff0448963fc0515aad87ac0cce6f8bc2}} 
+\index{Sprite@{Sprite}!````~Sprite@{$\sim$Sprite}}
+\index{````~Sprite@{$\sim$Sprite}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{$\sim$Sprite()}{~Sprite()}}
+{\footnotesize\ttfamily virtual Sprite\+::$\sim$\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sprite_a19dae127e873faf0adf984210bb5edad}\label{class_sprite_a19dae127e873faf0adf984210bb5edad}} 
+\index{Sprite@{Sprite}!Draw@{Draw}}
+\index{Draw@{Draw}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Sprite\+::\+Draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draws the sprites. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_drawable_manager_1_1_drawable_a3bebfc48f7ebda143664e8e2bc8a6b15}{Drawable\+Manager\+::\+Drawable}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_ball_a60b9ae6c168859bd84d0ede90d97fc86}{Ball}}, and \mbox{\hyperlink{class_stick_ae67c74de65efefc70bdcc1be2202616f}{Stick}}.
+
+\mbox{\Hypertarget{class_sprite_a85869aec5a58d19089fa322efc7cef80}\label{class_sprite_a85869aec5a58d19089fa322efc7cef80}} 
+\index{Sprite@{Sprite}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{GetHeight()}{GetHeight()}}
+{\footnotesize\ttfamily float Sprite\+::\+Get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the height of the sprites. 
+
+\begin{DoxyReturn}{Returns}
+float This returns the height of all the sprites 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_abc266c5dc4ca8d4c4ff11b4eea3992b8}\label{class_sprite_abc266c5dc4ca8d4c4ff11b4eea3992b8}} 
+\index{Sprite@{Sprite}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily Vector2 Sprite\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the position of the sprites. 
+
+\begin{DoxyReturn}{Returns}
+Vector2 This returns the exact position of the various sprites 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_a890d5da0484351bfc69869c1debe9747}\label{class_sprite_a890d5da0484351bfc69869c1debe9747}} 
+\index{Sprite@{Sprite}!GetRotation@{GetRotation}}
+\index{GetRotation@{GetRotation}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{GetRotation()}{GetRotation()}}
+{\footnotesize\ttfamily float Sprite\+::\+Get\+Rotation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the exact rotation of the sprites. 
+
+\begin{DoxyReturn}{Returns}
+float This returns the exact rotation of the sprites 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_a3a57dd81cb543ceb10be96a79169da1a}\label{class_sprite_a3a57dd81cb543ceb10be96a79169da1a}} 
+\index{Sprite@{Sprite}!GetWidth@{GetWidth}}
+\index{GetWidth@{GetWidth}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{GetWidth()}{GetWidth()}}
+{\footnotesize\ttfamily float Sprite\+::\+Get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the width of the sprites. 
+
+\begin{DoxyReturn}{Returns}
+float This returns the width of all the sprites 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_a193d51105ebd4cdc129156a9bb8cf130}\label{class_sprite_a193d51105ebd4cdc129156a9bb8cf130}} 
+\index{Sprite@{Sprite}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily void Sprite\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{Vector2}]{position }\end{DoxyParamCaption})}
+
+
+
+Sets the position of the sprites. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & This describes the exact position of every sprite \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sprite_a5d9dd4cafae7491cfffb48b82c2dd52d}\label{class_sprite_a5d9dd4cafae7491cfffb48b82c2dd52d}} 
+\index{Sprite@{Sprite}!SetRotation@{SetRotation}}
+\index{SetRotation@{SetRotation}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{SetRotation()}{SetRotation()}}
+{\footnotesize\ttfamily void Sprite\+::\+Set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{rotation }\end{DoxyParamCaption})}
+
+
+
+Sets the rotation of the sprites. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rotation} & This describes the exact rotation of the pool cue \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sprite_a54d18a18383575b04f397f5bec3113d0}\label{class_sprite_a54d18a18383575b04f397f5bec3113d0}} 
+\index{Sprite@{Sprite}!SetScale@{SetScale}}
+\index{SetScale@{SetScale}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{SetScale()}{SetScale()}}
+{\footnotesize\ttfamily void Sprite\+::\+Set\+Scale (\begin{DoxyParamCaption}\item[{float}]{scale }\end{DoxyParamCaption})}
+
+
+
+Sets the scale of the sprites. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scale} & This describes the scale factor ~\newline
+ \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_sprite_a2bca7fc096d73323f6984657f7e9b75c}\label{class_sprite_a2bca7fc096d73323f6984657f7e9b75c}} 
+\index{Sprite@{Sprite}!sprite\_position@{sprite\_position}}
+\index{sprite\_position@{sprite\_position}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{sprite\_position}{sprite\_position}}
+{\footnotesize\ttfamily Vector2 Sprite\+::sprite\+\_\+position\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_sprite_ab2b03801f7d1eb2ae0e9ac41caeb38c1}\label{class_sprite_ab2b03801f7d1eb2ae0e9ac41caeb38c1}} 
+\index{Sprite@{Sprite}!sprite\_rotation@{sprite\_rotation}}
+\index{sprite\_rotation@{sprite\_rotation}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{sprite\_rotation}{sprite\_rotation}}
+{\footnotesize\ttfamily float Sprite\+::sprite\+\_\+rotation\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_sprite_a7dd9b4dfd0bc7abbf2b321665411be22}\label{class_sprite_a7dd9b4dfd0bc7abbf2b321665411be22}} 
+\index{Sprite@{Sprite}!sprite\_scale\_factor@{sprite\_scale\_factor}}
+\index{sprite\_scale\_factor@{sprite\_scale\_factor}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{sprite\_scale\_factor}{sprite\_scale\_factor}}
+{\footnotesize\ttfamily float Sprite\+::sprite\+\_\+scale\+\_\+factor\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_sprite_aebf55b57f4adf0787931a1fed0d695a1}\label{class_sprite_aebf55b57f4adf0787931a1fed0d695a1}} 
+\index{Sprite@{Sprite}!sprite\_texture@{sprite\_texture}}
+\index{sprite\_texture@{sprite\_texture}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{sprite\_texture}{sprite\_texture}}
+{\footnotesize\ttfamily Texture2D Sprite\+::sprite\+\_\+texture\hspace{0.3cm}{\ttfamily [protected]}}
+

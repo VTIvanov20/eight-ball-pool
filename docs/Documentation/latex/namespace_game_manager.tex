@@ -1,0 +1,219 @@
+\hypertarget{namespace_game_manager}{}\doxysection{Game\+Manager Namespace Reference}
+\label{namespace_game_manager}\index{GameManager@{GameManager}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_game_manager_1_1_game_state}{Game\+State}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939b}{Scene}} \{ \mbox{\hyperlink{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939ba72a0bc8ca4cf6f702b069a0bce9c47c4}{MAIN\+\_\+\+MENU}} = 0
+, \mbox{\hyperlink{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939baaa64f2621bf24bf42b2aa93331300838}{SETTINGS\+\_\+\+MENU}} = 1
+, \mbox{\hyperlink{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939ba141a7874d02b0ecd0f736a7f1250f41b}{IN\+\_\+\+GAME}} = 2
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_game_manager_ae99cea627e4c744c75902a04de0e6c7d}{Turn}} \{ \mbox{\hyperlink{namespace_game_manager_ae99cea627e4c744c75902a04de0e6c7dad8c96706ba1819be02b8323b872cb730}{SMALL\+\_\+\+BALL}} = 0
+, \mbox{\hyperlink{namespace_game_manager_ae99cea627e4c744c75902a04de0e6c7da98b898a99d6b988c2885d8da1cacfed2}{BIG\+\_\+\+BALL}} = 1
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_game_manager_af5fe0f21fda3f14056f17d8fc97ab719}{Draw\+Colliders}} ()
+\item 
+void \mbox{\hyperlink{namespace_game_manager_afd2b01414e42f8e0bc2c4b50143e5a84}{Reinitialize\+Scene}} ()
+\item 
+void \mbox{\hyperlink{namespace_game_manager_a2a66831cced0140a4267f4b9ba1e99b3}{Initialize}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_game_manager_a02e4c71015d826172bc3a82f6c42c3ea}{Change\+Scene}} (\mbox{\hyperlink{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939b}{Scene}} scene)
+\begin{DoxyCompactList}\small\item\em An API function, which changes the current scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_game_manager_aaca6e9654ec38718f46b71a6f9ab3c40}{Quit}} ()
+\begin{DoxyCompactList}\small\item\em An API function, which triggers a boolean telling the program it should quit;. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_game_manager_af3bb4452ac262ec8a68dcc3eea2f0124}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Steps or updates the program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_game_manager_a70c2fe047206a881a4a4e5282f30d1c0}{Deinitialize}} ()
+\begin{DoxyCompactList}\small\item\em Deinitializes the program. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_game_manager_ae7ad2817ee14592c22f2f6b8a4ad6962}{Should\+Quit}} ()
+\begin{DoxyCompactList}\small\item\em Similar to the Window\+Should\+Close() function in raylib.\+h. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_game_manager_af2009132dc3e6c5913ec8860e0d23fdd}{Toggle\+Audio}} ()
+\begin{DoxyCompactList}\small\item\em An API function, which turns audio on or off. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_game_manager_a3af1c9fc804d2b4f7d1cdd12406da3a8}{Is\+Audio\+On}} ()
+\begin{DoxyCompactList}\small\item\em An API function which checks the game manager\textquotesingle{}s last stored master volume and tells if the audio is on or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_game_manager_1_1_game_state}{Game\+State}} \mbox{\hyperlink{namespace_game_manager_a54960067ed2ad301cd5a8de9aa1b9157}{state}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939b}\label{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939b}} 
+\index{GameManager@{GameManager}!Scene@{Scene}}
+\index{Scene@{Scene}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{Scene}{Scene}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939b}{Game\+Manager\+::\+Scene}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAIN\_MENU@{MAIN\_MENU}!GameManager@{GameManager}}\index{GameManager@{GameManager}!MAIN\_MENU@{MAIN\_MENU}}}\mbox{\Hypertarget{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939ba72a0bc8ca4cf6f702b069a0bce9c47c4}\label{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939ba72a0bc8ca4cf6f702b069a0bce9c47c4}} 
+MAIN\+\_\+\+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SETTINGS\_MENU@{SETTINGS\_MENU}!GameManager@{GameManager}}\index{GameManager@{GameManager}!SETTINGS\_MENU@{SETTINGS\_MENU}}}\mbox{\Hypertarget{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939baaa64f2621bf24bf42b2aa93331300838}\label{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939baaa64f2621bf24bf42b2aa93331300838}} 
+SETTINGS\+\_\+\+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IN\_GAME@{IN\_GAME}!GameManager@{GameManager}}\index{GameManager@{GameManager}!IN\_GAME@{IN\_GAME}}}\mbox{\Hypertarget{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939ba141a7874d02b0ecd0f736a7f1250f41b}\label{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939ba141a7874d02b0ecd0f736a7f1250f41b}} 
+IN\+\_\+\+GAME&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_game_manager_ae99cea627e4c744c75902a04de0e6c7d}\label{namespace_game_manager_ae99cea627e4c744c75902a04de0e6c7d}} 
+\index{GameManager@{GameManager}!Turn@{Turn}}
+\index{Turn@{Turn}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{Turn}{Turn}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_game_manager_ae99cea627e4c744c75902a04de0e6c7d}{Game\+Manager\+::\+Turn}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SMALL\_BALL@{SMALL\_BALL}!GameManager@{GameManager}}\index{GameManager@{GameManager}!SMALL\_BALL@{SMALL\_BALL}}}\mbox{\Hypertarget{namespace_game_manager_ae99cea627e4c744c75902a04de0e6c7dad8c96706ba1819be02b8323b872cb730}\label{namespace_game_manager_ae99cea627e4c744c75902a04de0e6c7dad8c96706ba1819be02b8323b872cb730}} 
+SMALL\+\_\+\+BALL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BIG\_BALL@{BIG\_BALL}!GameManager@{GameManager}}\index{GameManager@{GameManager}!BIG\_BALL@{BIG\_BALL}}}\mbox{\Hypertarget{namespace_game_manager_ae99cea627e4c744c75902a04de0e6c7da98b898a99d6b988c2885d8da1cacfed2}\label{namespace_game_manager_ae99cea627e4c744c75902a04de0e6c7da98b898a99d6b988c2885d8da1cacfed2}} 
+BIG\+\_\+\+BALL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespace_game_manager_a02e4c71015d826172bc3a82f6c42c3ea}\label{namespace_game_manager_a02e4c71015d826172bc3a82f6c42c3ea}} 
+\index{GameManager@{GameManager}!ChangeScene@{ChangeScene}}
+\index{ChangeScene@{ChangeScene}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{ChangeScene()}{ChangeScene()}}
+{\footnotesize\ttfamily void Game\+Manager\+::\+Change\+Scene (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939b}{Scene}}}]{scene }\end{DoxyParamCaption})}
+
+
+
+An API function, which changes the current scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & This describes the current scene\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Meant to be used at any point in the code 
+\end{DoxyNote}
+\mbox{\Hypertarget{namespace_game_manager_a70c2fe047206a881a4a4e5282f30d1c0}\label{namespace_game_manager_a70c2fe047206a881a4a4e5282f30d1c0}} 
+\index{GameManager@{GameManager}!Deinitialize@{Deinitialize}}
+\index{Deinitialize@{Deinitialize}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{Deinitialize()}{Deinitialize()}}
+{\footnotesize\ttfamily void Game\+Manager\+::\+Deinitialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Deinitializes the program. 
+
+\begin{DoxyNote}{Note}
+Meant to be used in \mbox{\hyperlink{main_8cpp}{main.\+cpp}} 
+\end{DoxyNote}
+\mbox{\Hypertarget{namespace_game_manager_af5fe0f21fda3f14056f17d8fc97ab719}\label{namespace_game_manager_af5fe0f21fda3f14056f17d8fc97ab719}} 
+\index{GameManager@{GameManager}!DrawColliders@{DrawColliders}}
+\index{DrawColliders@{DrawColliders}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{DrawColliders()}{DrawColliders()}}
+{\footnotesize\ttfamily void Game\+Manager\+::\+Draw\+Colliders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespace_game_manager_a2a66831cced0140a4267f4b9ba1e99b3}\label{namespace_game_manager_a2a66831cced0140a4267f4b9ba1e99b3}} 
+\index{GameManager@{GameManager}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void Game\+Manager\+::\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the program. 
+
+\begin{DoxyNote}{Note}
+Meant to be used in \mbox{\hyperlink{main_8cpp}{main.\+cpp}} 
+\end{DoxyNote}
+\mbox{\Hypertarget{namespace_game_manager_a3af1c9fc804d2b4f7d1cdd12406da3a8}\label{namespace_game_manager_a3af1c9fc804d2b4f7d1cdd12406da3a8}} 
+\index{GameManager@{GameManager}!IsAudioOn@{IsAudioOn}}
+\index{IsAudioOn@{IsAudioOn}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{IsAudioOn()}{IsAudioOn()}}
+{\footnotesize\ttfamily bool Game\+Manager\+::\+Is\+Audio\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+An API function which checks the game manager\textquotesingle{}s last stored master volume and tells if the audio is on or not. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespace_game_manager_aaca6e9654ec38718f46b71a6f9ab3c40}\label{namespace_game_manager_aaca6e9654ec38718f46b71a6f9ab3c40}} 
+\index{GameManager@{GameManager}!Quit@{Quit}}
+\index{Quit@{Quit}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{Quit()}{Quit()}}
+{\footnotesize\ttfamily void Game\+Manager\+::\+Quit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+An API function, which triggers a boolean telling the program it should quit;. 
+
+\begin{DoxyAttention}{Attention}
+Meant to be used at any point in the code (unlike functions like initialize and deinitialize) 
+\end{DoxyAttention}
+\mbox{\Hypertarget{namespace_game_manager_afd2b01414e42f8e0bc2c4b50143e5a84}\label{namespace_game_manager_afd2b01414e42f8e0bc2c4b50143e5a84}} 
+\index{GameManager@{GameManager}!ReinitializeScene@{ReinitializeScene}}
+\index{ReinitializeScene@{ReinitializeScene}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{ReinitializeScene()}{ReinitializeScene()}}
+{\footnotesize\ttfamily void Game\+Manager\+::\+Reinitialize\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespace_game_manager_ae7ad2817ee14592c22f2f6b8a4ad6962}\label{namespace_game_manager_ae7ad2817ee14592c22f2f6b8a4ad6962}} 
+\index{GameManager@{GameManager}!ShouldQuit@{ShouldQuit}}
+\index{ShouldQuit@{ShouldQuit}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{ShouldQuit()}{ShouldQuit()}}
+{\footnotesize\ttfamily bool Game\+Manager\+::\+Should\+Quit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Similar to the Window\+Should\+Close() function in raylib.\+h. 
+
+\begin{DoxyNote}{Note}
+Meant to be used in \mbox{\hyperlink{main_8cpp}{main.\+cpp}}
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespace_game_manager_af2009132dc3e6c5913ec8860e0d23fdd}\label{namespace_game_manager_af2009132dc3e6c5913ec8860e0d23fdd}} 
+\index{GameManager@{GameManager}!ToggleAudio@{ToggleAudio}}
+\index{ToggleAudio@{ToggleAudio}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{ToggleAudio()}{ToggleAudio()}}
+{\footnotesize\ttfamily void Game\+Manager\+::\+Toggle\+Audio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+An API function, which turns audio on or off. 
+
+\mbox{\Hypertarget{namespace_game_manager_af3bb4452ac262ec8a68dcc3eea2f0124}\label{namespace_game_manager_af3bb4452ac262ec8a68dcc3eea2f0124}} 
+\index{GameManager@{GameManager}!Update@{Update}}
+\index{Update@{Update}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Game\+Manager\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Steps or updates the program. 
+
+\begin{DoxyNote}{Note}
+Meant to be used in \mbox{\hyperlink{main_8cpp}{main.\+cpp}} 
+\end{DoxyNote}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespace_game_manager_a54960067ed2ad301cd5a8de9aa1b9157}\label{namespace_game_manager_a54960067ed2ad301cd5a8de9aa1b9157}} 
+\index{GameManager@{GameManager}!state@{state}}
+\index{state@{state}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_game_manager_1_1_game_state}{Game\+State}} Game\+Manager\+::state}
+

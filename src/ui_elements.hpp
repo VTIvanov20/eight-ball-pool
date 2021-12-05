@@ -53,9 +53,21 @@ public:
         UnloadSound(click_sound);
     }
 
+    /**
+     * @brief Checks whether the button has been clicked or not
+     * 
+     * @return bool
+     */
     bool IsClicked();
 
+    /**
+     * @brief Draws the sprites
+     */
     void Draw() override;
+
+    /**
+     * @brief Updates the spritess
+     */
     void Update() override;
 };
 
@@ -71,6 +83,10 @@ public:
     };
 
     virtual ~Label() = default;
+
+    /**
+     * @brief Draws the sprites
+     */
     void Draw() override;
 };
 
@@ -91,7 +107,24 @@ public:
 
     virtual ~CheckBox() = default;
 
+    /**
+     * @brief Draws the sprites
+     */
     void Draw() override;
+
+    /**
+     * @brief Checks whether or not any of the checkboxes are checked
+     * 
+     * @return bool (if the box checked)
+     */
     bool IsChecked();
+
+    /**
+     * @brief Sets the "Checked" status of the boxes
+     * 
+     * @param value This describes the output from the IsChecked() function
+     * 
+     * @see IsChecked()
+     */
     void SetChecked(bool value);
 };

@@ -1,0 +1,63 @@
+\hypertarget{game__manager_8hpp_source}{}\doxysection{game\+\_\+manager.\+hpp}
+\label{game__manager_8hpp_source}\index{src/game\_manager.hpp@{src/game\_manager.hpp}}
+\mbox{\hyperlink{game__manager_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <raylib.h>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{config_8h}{config.h}}"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{drawable_8hpp}{drawable.hpp}}"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{sprite_8hpp}{sprite.hpp}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{table_8hpp}{table.hpp}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{main__menu_8hpp}{main\_menu.hpp}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{settings__menu_8hpp}{settings\_menu.hpp}}"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{game__scene_8hpp}{game\_scene.hpp}}"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <physac.h>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_game_manager}{GameManager}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     \textcolor{keyword}{enum} \mbox{\hyperlink{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939b}{Scene}}}
+\DoxyCodeLine{20     \{}
+\DoxyCodeLine{21         \mbox{\hyperlink{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939ba72a0bc8ca4cf6f702b069a0bce9c47c4}{MAIN\_MENU}} = 0,}
+\DoxyCodeLine{22         \mbox{\hyperlink{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939baaa64f2621bf24bf42b2aa93331300838}{SETTINGS\_MENU}} = 1,}
+\DoxyCodeLine{23         \mbox{\hyperlink{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939ba141a7874d02b0ecd0f736a7f1250f41b}{IN\_GAME}} = 2,}
+\DoxyCodeLine{24     \};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{keyword}{enum} \mbox{\hyperlink{namespace_game_manager_ae99cea627e4c744c75902a04de0e6c7d}{Turn}}}
+\DoxyCodeLine{27     \{}
+\DoxyCodeLine{28         \mbox{\hyperlink{namespace_game_manager_ae99cea627e4c744c75902a04de0e6c7dad8c96706ba1819be02b8323b872cb730}{SMALL\_BALL}} = 0,}
+\DoxyCodeLine{29         \mbox{\hyperlink{namespace_game_manager_ae99cea627e4c744c75902a04de0e6c7da98b898a99d6b988c2885d8da1cacfed2}{BIG\_BALL}} = 1,}
+\DoxyCodeLine{30     \};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_game_manager_1_1_game_state}{GameState}}}
+\DoxyCodeLine{33     \{}
+\DoxyCodeLine{34         \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_game_manager_1_1_game_state_afaf9473255a473d1191e08a6ded07711}{scene\_update}};}
+\DoxyCodeLine{35         \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_game_manager_1_1_game_state_a67a8d85358553b7b5af15f2827f1ab86}{should\_quit}};}
+\DoxyCodeLine{36         \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_game_manager_1_1_game_state_ad552b072b5e8f387cfd7f9ce994b5599}{audio\_uninitialized}};}
+\DoxyCodeLine{37         \textcolor{keywordtype}{float} \mbox{\hyperlink{struct_game_manager_1_1_game_state_af7d6dbc443b7cab5a0bf1f3fc8238dd0}{master\_volume}};}
+\DoxyCodeLine{38         \mbox{\hyperlink{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939b}{Scene}} \mbox{\hyperlink{struct_game_manager_1_1_game_state_aa34e67347e6f47aece9d12ac181af3fa}{scene}};}
+\DoxyCodeLine{39         \mbox{\hyperlink{namespace_game_manager_ae99cea627e4c744c75902a04de0e6c7d}{Turn}} \mbox{\hyperlink{struct_game_manager_1_1_game_state_af8eaea3528276d0a5a27e298efefae41}{current\_turn}};}
+\DoxyCodeLine{40     \};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{47     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_game_manager_a2a66831cced0140a4267f4b9ba1e99b3}{Initialize}}();}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_game_manager_a70c2fe047206a881a4a4e5282f30d1c0}{Deinitialize}}();}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{61     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_game_manager_af3bb4452ac262ec8a68dcc3eea2f0124}{Update}}();}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{70     \textcolor{keywordtype}{bool} \mbox{\hyperlink{namespace_game_manager_ae7ad2817ee14592c22f2f6b8a4ad6962}{ShouldQuit}}();}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{77     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_game_manager_aaca6e9654ec38718f46b71a6f9ab3c40}{Quit}}();}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{86     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_game_manager_a02e4c71015d826172bc3a82f6c42c3ea}{ChangeScene}}(\mbox{\hyperlink{namespace_game_manager_ac75c44285b9e173aa7c293c3d2a7939b}{Scene}} scene); }
+\DoxyCodeLine{87 }
+\DoxyCodeLine{91     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_game_manager_af2009132dc3e6c5913ec8860e0d23fdd}{ToggleAudio}}();}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{98     \textcolor{keywordtype}{bool} \mbox{\hyperlink{namespace_game_manager_a3af1c9fc804d2b4f7d1cdd12406da3a8}{IsAudioOn}}();}
+\DoxyCodeLine{99 \}}
+
+\end{DoxyCode}

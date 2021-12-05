@@ -39,15 +39,61 @@ namespace GameManager
         Turn current_turn;
     };
 
+    /**
+     * @brief Initializes the program
+     * 
+     * @note Meant to be used in main.cpp
+     */
+    void Initialize();
 
-    void Initialize(); // meant to be used in main.cpp to initialize the program
-    void Deinitialize(); // meant to be used in main.cpp to deinitialize the program
-    void Update(); // meant to be used in main.cpp to step or update the program
-    bool ShouldQuit(); // meant to be used in main.cpp; similar to the WindowShouldClose function in raylib.h
+    /**
+     * @brief Deinitializes the program
+     * 
+     * @note Meant to be used in main.cpp
+     */
+    void Deinitialize();
 
-    void Quit(); // api function which triggers a boolean telling the program it should quit; meant to be used at any point in the code (unlike functions like initialize and deinitialize)
-    void ChangeScene(Scene scene); // api function which changes the current scene; it is meant to be used at any point in the code
+    /**
+     * @brief Steps or updates the program
+     * 
+     * @note Meant to be used in main.cpp
+     */
+    void Update();
 
-    void ToggleAudio(); // api function which turns audio on or off
-    bool IsAudioOn(); // api function which checks the game manager's last stored master volume and tells if the audio is on or not
+    /**
+     * @brief Similar to the WindowShouldClose() function in raylib.h
+     * 
+     * @note Meant to be used in main.cpp
+     * 
+     * @return bool
+     */
+    bool ShouldQuit();
+
+    /**
+     * @brief An API function, which triggers a boolean telling the program it should quit;
+     * 
+     * @attention Meant to be used at any point in the code (unlike functions like initialize and deinitialize)
+     */
+    void Quit();
+
+    /**
+     * @brief An API function, which changes the current scene
+     * 
+     * @param scene This describes the current scene
+     * 
+     * @note Meant to be used at any point in the code
+     */
+    void ChangeScene(Scene scene); 
+
+    /**
+     * @brief An API function, which turns audio on or off
+     */
+    void ToggleAudio();
+
+    /**
+     * @brief An API function which checks the game manager's last stored master volume and tells if the audio is on or not
+     * 
+     * @return bool
+     */
+    bool IsAudioOn();
 }

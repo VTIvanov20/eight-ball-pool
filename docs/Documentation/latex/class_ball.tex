@@ -1,0 +1,98 @@
+\hypertarget{class_ball}{}\doxysection{Ball Class Reference}
+\label{class_ball}\index{Ball@{Ball}}
+
+
+{\ttfamily \#include $<$table.\+hpp$>$}
+
+Inheritance diagram for Ball\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_ball}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ball_a8dabdf16eb7861a9af29f1be658a3b93}{Ball}} (int number, Vector2 initial\+\_\+position)
+\item 
+virtual \mbox{\hyperlink{class_ball_ad9567f71b8d1b3a4bab12e1f4bf38bf7}{$\sim$\+Ball}} ()=default
+\item 
+Vector2 \mbox{\hyperlink{class_ball_ace2f47a18e009fb1c585e25c414ff274}{Get\+Position}} ()
+\item 
+Vector2 \mbox{\hyperlink{class_ball_ab2bdbd5c2f4c02f9790e20e549525395}{Get\+Velocity}} ()
+\item 
+void \mbox{\hyperlink{class_ball_a075f82a076e1ff9e25bd2afe8e834096}{Set\+Position}} (Vector2 pos)
+\item 
+void \mbox{\hyperlink{class_ball_a6c67f1e5bcf57833d84a83c2aefb969c}{Add\+Force}} (Vector2 force)
+\item 
+void \mbox{\hyperlink{class_ball_a47cfc4862dad5db1ec0ffbfcc8aca739}{Update}} () override
+\item 
+void \mbox{\hyperlink{class_ball_a60b9ae6c168859bd84d0ede90d97fc86}{Draw}} () override
+\begin{DoxyCompactList}\small\item\em Draws the sprites. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_ball_a8dabdf16eb7861a9af29f1be658a3b93}\label{class_ball_a8dabdf16eb7861a9af29f1be658a3b93}} 
+\index{Ball@{Ball}!Ball@{Ball}}
+\index{Ball@{Ball}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{Ball()}{Ball()}}
+{\footnotesize\ttfamily Ball\+::\+Ball (\begin{DoxyParamCaption}\item[{int}]{number,  }\item[{Vector2}]{initial\+\_\+position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_ball_ad9567f71b8d1b3a4bab12e1f4bf38bf7}\label{class_ball_ad9567f71b8d1b3a4bab12e1f4bf38bf7}} 
+\index{Ball@{Ball}!````~Ball@{$\sim$Ball}}
+\index{````~Ball@{$\sim$Ball}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{$\sim$Ball()}{~Ball()}}
+{\footnotesize\ttfamily virtual Ball\+::$\sim$\+Ball (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ball_a6c67f1e5bcf57833d84a83c2aefb969c}\label{class_ball_a6c67f1e5bcf57833d84a83c2aefb969c}} 
+\index{Ball@{Ball}!AddForce@{AddForce}}
+\index{AddForce@{AddForce}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{AddForce()}{AddForce()}}
+{\footnotesize\ttfamily void Ball\+::\+Add\+Force (\begin{DoxyParamCaption}\item[{Vector2}]{force }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_ball_a60b9ae6c168859bd84d0ede90d97fc86}\label{class_ball_a60b9ae6c168859bd84d0ede90d97fc86}} 
+\index{Ball@{Ball}!Draw@{Draw}}
+\index{Draw@{Draw}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Ball\+::\+Draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draws the sprites. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_sprite_a19dae127e873faf0adf984210bb5edad}{Sprite}}.
+
+\mbox{\Hypertarget{class_ball_ace2f47a18e009fb1c585e25c414ff274}\label{class_ball_ace2f47a18e009fb1c585e25c414ff274}} 
+\index{Ball@{Ball}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily Vector2 Ball\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_ball_ab2bdbd5c2f4c02f9790e20e549525395}\label{class_ball_ab2bdbd5c2f4c02f9790e20e549525395}} 
+\index{Ball@{Ball}!GetVelocity@{GetVelocity}}
+\index{GetVelocity@{GetVelocity}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{GetVelocity()}{GetVelocity()}}
+{\footnotesize\ttfamily Vector2 Ball\+::\+Get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_ball_a075f82a076e1ff9e25bd2afe8e834096}\label{class_ball_a075f82a076e1ff9e25bd2afe8e834096}} 
+\index{Ball@{Ball}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily void Ball\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{Vector2}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_ball_a47cfc4862dad5db1ec0ffbfcc8aca739}\label{class_ball_a47cfc4862dad5db1ec0ffbfcc8aca739}} 
+\index{Ball@{Ball}!Update@{Update}}
+\index{Update@{Update}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Ball\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_drawable_manager_1_1_drawable_aa3e819b23a61a5f882470141fbdb7a22}{Drawable\+Manager\+::\+Drawable}}.
+

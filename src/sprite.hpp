@@ -33,13 +33,57 @@ public:
         UnloadTexture(sprite_texture);
     }
 
+    /**
+     * @brief Sets the scale of the sprites
+     * 
+     * @param scale This describes the scale factor  
+     */
     void SetScale(float scale);
+
+    /**
+     * @brief Sets the position of the sprites
+     * 
+     * @param position This describes the exact position of every sprite
+     */
     void SetPosition(Vector2 position);
+
+    /**
+     * @brief Sets the rotation of the sprites
+     * 
+     * @param rotation This describes the exact rotation of the pool cue
+     */
     void SetRotation(float rotation);
+
+    /**
+     * @brief Gets the position of the sprites
+     * 
+     * @return Vector2 This returns the exact position of the various sprites
+     */
     Vector2 GetPosition();
+
+    /**
+     * @brief Gets the width of the sprites
+     * 
+     * @return float This returns the width of all the sprites
+     */
     float GetWidth();
+    
+    /**
+     * @brief Gets the height of the sprites
+     * 
+     * @return float This returns the height of all the sprites
+     */
     float GetHeight();
+
+    /**
+     * @brief Gets the exact rotation of the sprites
+     * 
+     * @return float This returns the exact rotation of the sprites
+     */
     float GetRotation();
 
+    /**
+     * @brief Draws the sprites
+     */
     void Draw() override;
 };

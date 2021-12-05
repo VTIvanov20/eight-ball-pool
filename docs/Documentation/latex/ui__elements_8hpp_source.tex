@@ -1,0 +1,107 @@
+\hypertarget{ui__elements_8hpp_source}{}\doxysection{ui\+\_\+elements.\+hpp}
+\label{ui__elements_8hpp_source}\index{src/ui\_elements.hpp@{src/ui\_elements.hpp}}
+\mbox{\hyperlink{ui__elements_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <raygui.h>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{drawable_8hpp}{drawable.hpp}}"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_u_i_element}{UIElement}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_drawable_manager_1_1_drawable}{DrawableManager::Drawable}}}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{9     Rectangle \mbox{\hyperlink{class_u_i_element_a466ccfeb5c36377aa9e4be9343d0b670}{bounds}};}
+\DoxyCodeLine{10     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_u_i_element_a3c78c939c58c4fcbd8eb6b995adbd71d}{rotation}};}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{public}:}
+\DoxyCodeLine{13     \mbox{\hyperlink{class_u_i_element_a1f0a408754a358861ca2df1bf48271a4}{UIElement}}(Rectangle \mbox{\hyperlink{class_u_i_element_a466ccfeb5c36377aa9e4be9343d0b670}{bounds}}, \textcolor{keywordtype}{float} \mbox{\hyperlink{class_u_i_element_a3c78c939c58c4fcbd8eb6b995adbd71d}{rotation}}) : \mbox{\hyperlink{class_drawable_manager_1_1_drawable_a6931feed795bb6dc15637fd487548816}{Drawable}}()}
+\DoxyCodeLine{14     \{}
+\DoxyCodeLine{15         this-\/>bounds = \mbox{\hyperlink{class_u_i_element_a466ccfeb5c36377aa9e4be9343d0b670}{bounds}};}
+\DoxyCodeLine{16         this-\/>rotation = \mbox{\hyperlink{class_u_i_element_a3c78c939c58c4fcbd8eb6b995adbd71d}{rotation}};}
+\DoxyCodeLine{17     \}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_u_i_element_af1f65875d00272bf5242309a32119d9b}{\string~UIElement}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_u_i_element_a759e07cd06c883bcd0bac0b69a39270a}{SetPosition}}(Vector2 position);}
+\DoxyCodeLine{22     Vector2 \mbox{\hyperlink{class_u_i_element_a5931f1b244cd1e57dd2e3ac85d771662}{GetPosition}}();}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_u_i_element_aa7cf4e482f5be49c7744076b86df347d}{SetRotation}}(\textcolor{keywordtype}{float} \mbox{\hyperlink{class_u_i_element_a3c78c939c58c4fcbd8eb6b995adbd71d}{rotation}});}
+\DoxyCodeLine{25     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_u_i_element_a251175f2c7ce1742b3ca2c4ee0b533f2}{GetRotation}}();}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_u_i_element_a924be21d9a78b758f5353a16e5898653}{SetSize}}(Vector2 size);}
+\DoxyCodeLine{28     Vector2 \mbox{\hyperlink{class_u_i_element_ac334e39531abadb26c56cfefcd0e875f}{GetSize}}();}
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{class }\mbox{\hyperlink{class_button}{Button}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_u_i_element}{UIElement}}}
+\DoxyCodeLine{32 \{}
+\DoxyCodeLine{33 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{34     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_button_acf91604139ba81321c4e0b5fd508fd26}{is\_clicked}};}
+\DoxyCodeLine{35     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{class_button_a63be2602c7e7ca11f8daf4279c618469}{text}};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     Sound \mbox{\hyperlink{class_button_a568d81ac85d403b729fa89ba93193c0f}{hover\_sound}};}
+\DoxyCodeLine{38     Sound \mbox{\hyperlink{class_button_ad28b965f793306e268e291049a8b20d1}{click\_sound}};}
+\DoxyCodeLine{39     }
+\DoxyCodeLine{40 \textcolor{keyword}{public}:}
+\DoxyCodeLine{41     \mbox{\hyperlink{class_button_a5c5874d824b84a796952059a8146c519}{Button}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{class_button_a63be2602c7e7ca11f8daf4279c618469}{text}}, Rectangle \mbox{\hyperlink{class_u_i_element_a466ccfeb5c36377aa9e4be9343d0b670}{bounds}}, \textcolor{keywordtype}{float} \mbox{\hyperlink{class_u_i_element_a3c78c939c58c4fcbd8eb6b995adbd71d}{rotation}}) : \mbox{\hyperlink{class_u_i_element}{UIElement}}(\mbox{\hyperlink{class_u_i_element_a466ccfeb5c36377aa9e4be9343d0b670}{bounds}}, \mbox{\hyperlink{class_u_i_element_a3c78c939c58c4fcbd8eb6b995adbd71d}{rotation}})}
+\DoxyCodeLine{42     \{}
+\DoxyCodeLine{43         this-\/>text = \mbox{\hyperlink{class_button_a63be2602c7e7ca11f8daf4279c618469}{text}};}
+\DoxyCodeLine{44         this-\/>is\_clicked = \textcolor{keyword}{false};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46         \mbox{\hyperlink{class_button_ad28b965f793306e268e291049a8b20d1}{click\_sound}} = LoadSound(\textcolor{stringliteral}{"{}resources/sfx/menu\_hover.wav"{}});}
+\DoxyCodeLine{47         \mbox{\hyperlink{class_button_a568d81ac85d403b729fa89ba93193c0f}{hover\_sound}} = LoadSound(\textcolor{stringliteral}{"{}resources/sfx/menu\_click.wav"{}});}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_button_a6d35cf666b119be6153a717427f9b5e2}{\string~Button}}()}
+\DoxyCodeLine{51     \{}
+\DoxyCodeLine{52         UnloadSound(\mbox{\hyperlink{class_button_a568d81ac85d403b729fa89ba93193c0f}{hover\_sound}});}
+\DoxyCodeLine{53         UnloadSound(\mbox{\hyperlink{class_button_ad28b965f793306e268e291049a8b20d1}{click\_sound}});}
+\DoxyCodeLine{54     \}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{61     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_button_a558fca94a13801401b9a2db2e442e5d2}{IsClicked}}();}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{66     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_button_a592226e08baaecbea531fa4539f558ca}{Draw}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{71     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_button_a25bb759f840f630f901d349b9efbcd28}{Update}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{72 \};}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{keyword}{class }\mbox{\hyperlink{class_label}{Label}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_u_i_element}{UIElement}}}
+\DoxyCodeLine{75 \{}
+\DoxyCodeLine{76 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{77     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{class_label_a84590939d4dace9549e1c1bfdddeb804}{text}};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{keyword}{public}:}
+\DoxyCodeLine{80     \mbox{\hyperlink{class_label_aff4e11d80e0166cafb84350c3555fd80}{Label}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{class_label_a84590939d4dace9549e1c1bfdddeb804}{text}}, Rectangle \mbox{\hyperlink{class_u_i_element_a466ccfeb5c36377aa9e4be9343d0b670}{bounds}}, \textcolor{keywordtype}{float} \mbox{\hyperlink{class_u_i_element_a3c78c939c58c4fcbd8eb6b995adbd71d}{rotation}}) : \mbox{\hyperlink{class_u_i_element}{UIElement}}(\mbox{\hyperlink{class_u_i_element_a466ccfeb5c36377aa9e4be9343d0b670}{bounds}}, \mbox{\hyperlink{class_u_i_element_a3c78c939c58c4fcbd8eb6b995adbd71d}{rotation}})}
+\DoxyCodeLine{81     \{}
+\DoxyCodeLine{82         this-\/>text = \mbox{\hyperlink{class_label_a84590939d4dace9549e1c1bfdddeb804}{text}};}
+\DoxyCodeLine{83     \};}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_label_ae2a43e0bd234c259c337e99099a8af5a}{\string~Label}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{90     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_label_af021691b39b1b4e87d5d1fca3e12b915}{Draw}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{91 \};}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 \textcolor{keyword}{class }\mbox{\hyperlink{class_check_box}{CheckBox}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_u_i_element}{UIElement}}}
+\DoxyCodeLine{94 \{}
+\DoxyCodeLine{95 \textcolor{keyword}{private}:}
+\DoxyCodeLine{96     \textcolor{keywordtype}{bool} checked;}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{99     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{class_check_box_afb79eb0ba0c1a31f1a42635f5253545f}{placeholder\_text}};}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101 \textcolor{keyword}{public}:}
+\DoxyCodeLine{102     \mbox{\hyperlink{class_check_box_ad09def439f2f6497335514c7b8613977}{CheckBox}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* text, Rectangle \mbox{\hyperlink{class_u_i_element_a466ccfeb5c36377aa9e4be9343d0b670}{bounds}}, \textcolor{keywordtype}{float} \mbox{\hyperlink{class_u_i_element_a3c78c939c58c4fcbd8eb6b995adbd71d}{rotation}}, \textcolor{keywordtype}{bool} checked = \textcolor{keyword}{false}) : \mbox{\hyperlink{class_u_i_element}{UIElement}}(\mbox{\hyperlink{class_u_i_element_a466ccfeb5c36377aa9e4be9343d0b670}{bounds}}, \mbox{\hyperlink{class_u_i_element_a3c78c939c58c4fcbd8eb6b995adbd71d}{rotation}})}
+\DoxyCodeLine{103     \{}
+\DoxyCodeLine{104         \mbox{\hyperlink{class_check_box_afb79eb0ba0c1a31f1a42635f5253545f}{placeholder\_text}} = text;}
+\DoxyCodeLine{105         this-\/>checked = checked;}
+\DoxyCodeLine{106     \}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_check_box_a9582afbb1ee2e515492adb7f8d74ff71}{\string~CheckBox}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{113     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_check_box_a271ec32c1fa895b19179380faeb4c772}{Draw}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{120     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_check_box_a364cdde2bf757ee40ac27fc08e810069}{IsChecked}}();}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{129     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_check_box_a06b797c3fdabf103b50bf6b288c95876}{SetChecked}}(\textcolor{keywordtype}{bool} value);}
+\DoxyCodeLine{130 \};}
+
+\end{DoxyCode}

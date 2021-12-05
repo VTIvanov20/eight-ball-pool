@@ -1,0 +1,122 @@
+\hypertarget{class_button}{}\doxysection{Button Class Reference}
+\label{class_button}\index{Button@{Button}}
+
+
+{\ttfamily \#include $<$ui\+\_\+elements.\+hpp$>$}
+
+Inheritance diagram for Button\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_button}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_button_a5c5874d824b84a796952059a8146c519}{Button}} (const char $\ast$\mbox{\hyperlink{class_button_a63be2602c7e7ca11f8daf4279c618469}{text}}, Rectangle \mbox{\hyperlink{class_u_i_element_a466ccfeb5c36377aa9e4be9343d0b670}{bounds}}, float \mbox{\hyperlink{class_u_i_element_a3c78c939c58c4fcbd8eb6b995adbd71d}{rotation}})
+\item 
+virtual \mbox{\hyperlink{class_button_a6d35cf666b119be6153a717427f9b5e2}{$\sim$\+Button}} ()
+\item 
+bool \mbox{\hyperlink{class_button_a558fca94a13801401b9a2db2e442e5d2}{Is\+Clicked}} ()
+\begin{DoxyCompactList}\small\item\em Checks whether the button has been clicked or not. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_button_a592226e08baaecbea531fa4539f558ca}{Draw}} () override
+\begin{DoxyCompactList}\small\item\em Draws the sprites. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_button_a25bb759f840f630f901d349b9efbcd28}{Update}} () override
+\begin{DoxyCompactList}\small\item\em Updates the spritess. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_button_acf91604139ba81321c4e0b5fd508fd26}{is\+\_\+clicked}}
+\item 
+const char $\ast$ \mbox{\hyperlink{class_button_a63be2602c7e7ca11f8daf4279c618469}{text}}
+\item 
+Sound \mbox{\hyperlink{class_button_a568d81ac85d403b729fa89ba93193c0f}{hover\+\_\+sound}}
+\item 
+Sound \mbox{\hyperlink{class_button_ad28b965f793306e268e291049a8b20d1}{click\+\_\+sound}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_button_a5c5874d824b84a796952059a8146c519}\label{class_button_a5c5874d824b84a796952059a8146c519}} 
+\index{Button@{Button}!Button@{Button}}
+\index{Button@{Button}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{Button()}{Button()}}
+{\footnotesize\ttfamily Button\+::\+Button (\begin{DoxyParamCaption}\item[{const char $\ast$}]{text,  }\item[{Rectangle}]{bounds,  }\item[{float}]{rotation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_button_a6d35cf666b119be6153a717427f9b5e2}\label{class_button_a6d35cf666b119be6153a717427f9b5e2}} 
+\index{Button@{Button}!````~Button@{$\sim$Button}}
+\index{````~Button@{$\sim$Button}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{$\sim$Button()}{~Button()}}
+{\footnotesize\ttfamily virtual Button\+::$\sim$\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_button_a592226e08baaecbea531fa4539f558ca}\label{class_button_a592226e08baaecbea531fa4539f558ca}} 
+\index{Button@{Button}!Draw@{Draw}}
+\index{Draw@{Draw}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Button\+::\+Draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draws the sprites. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_drawable_manager_1_1_drawable_a3bebfc48f7ebda143664e8e2bc8a6b15}{Drawable\+Manager\+::\+Drawable}}.
+
+\mbox{\Hypertarget{class_button_a558fca94a13801401b9a2db2e442e5d2}\label{class_button_a558fca94a13801401b9a2db2e442e5d2}} 
+\index{Button@{Button}!IsClicked@{IsClicked}}
+\index{IsClicked@{IsClicked}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{IsClicked()}{IsClicked()}}
+{\footnotesize\ttfamily bool Button\+::\+Is\+Clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks whether the button has been clicked or not. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_button_a25bb759f840f630f901d349b9efbcd28}\label{class_button_a25bb759f840f630f901d349b9efbcd28}} 
+\index{Button@{Button}!Update@{Update}}
+\index{Update@{Update}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Button\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the spritess. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_drawable_manager_1_1_drawable_aa3e819b23a61a5f882470141fbdb7a22}{Drawable\+Manager\+::\+Drawable}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_button_ad28b965f793306e268e291049a8b20d1}\label{class_button_ad28b965f793306e268e291049a8b20d1}} 
+\index{Button@{Button}!click\_sound@{click\_sound}}
+\index{click\_sound@{click\_sound}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{click\_sound}{click\_sound}}
+{\footnotesize\ttfamily Sound Button\+::click\+\_\+sound\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_button_a568d81ac85d403b729fa89ba93193c0f}\label{class_button_a568d81ac85d403b729fa89ba93193c0f}} 
+\index{Button@{Button}!hover\_sound@{hover\_sound}}
+\index{hover\_sound@{hover\_sound}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{hover\_sound}{hover\_sound}}
+{\footnotesize\ttfamily Sound Button\+::hover\+\_\+sound\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_button_acf91604139ba81321c4e0b5fd508fd26}\label{class_button_acf91604139ba81321c4e0b5fd508fd26}} 
+\index{Button@{Button}!is\_clicked@{is\_clicked}}
+\index{is\_clicked@{is\_clicked}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{is\_clicked}{is\_clicked}}
+{\footnotesize\ttfamily bool Button\+::is\+\_\+clicked\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_button_a63be2602c7e7ca11f8daf4279c618469}\label{class_button_a63be2602c7e7ca11f8daf4279c618469}} 
+\index{Button@{Button}!text@{text}}
+\index{text@{text}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{text}{text}}
+{\footnotesize\ttfamily const char$\ast$ Button\+::text\hspace{0.3cm}{\ttfamily [protected]}}
+

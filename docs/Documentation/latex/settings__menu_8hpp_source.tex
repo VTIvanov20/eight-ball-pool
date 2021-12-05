@@ -1,0 +1,31 @@
+\hypertarget{settings__menu_8hpp_source}{}\doxysection{settings\+\_\+menu.\+hpp}
+\label{settings__menu_8hpp_source}\index{src/settings\_menu.hpp@{src/settings\_menu.hpp}}
+\mbox{\hyperlink{settings__menu_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <raylib.h>}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{drawable_8hpp}{drawable.hpp}}"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{ui__elements_8hpp}{ui\_elements.hpp}}"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{game__manager_8hpp}{game\_manager.hpp}}"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{config_8h}{config.h}}"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_settings_menu}{SettingsMenu}} : \mbox{\hyperlink{class_drawable_manager_1_1_drawable}{DrawableManager::Drawable}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15 \textcolor{keyword}{private}:}
+\DoxyCodeLine{16     std::list<UIElement*> elements;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19     \mbox{\hyperlink{class_settings_menu_a91268b8760dfe04d8887b9d527c9857c}{SettingsMenu}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{20     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_settings_menu_a9e4652ba7d12ed2a88a7ab4f97f63e31}{\string~SettingsMenu}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_settings_menu_a2c5098c1ea99bccd345985e023562f21}{Create}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_settings_menu_a0f6c17daf9b17c06fc31f34d119f90c9}{Update}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{31 \};}
+
+\end{DoxyCode}

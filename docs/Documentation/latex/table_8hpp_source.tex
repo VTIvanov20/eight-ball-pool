@@ -1,0 +1,103 @@
+\hypertarget{table_8hpp_source}{}\doxysection{table.\+hpp}
+\label{table_8hpp_source}\index{src/table.hpp@{src/table.hpp}}
+\mbox{\hyperlink{table_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{sprite_8hpp}{sprite.hpp}}"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{config_8h}{config.h}}"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <physac.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <raylib.h>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_ball}{Ball}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_sprite}{Sprite}}}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} ball\_number;}
+\DoxyCodeLine{15     PhysicsBody body;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18     \mbox{\hyperlink{class_ball_a8dabdf16eb7861a9af29f1be658a3b93}{Ball}}(\textcolor{keywordtype}{int} number, Vector2 initial\_position) }
+\DoxyCodeLine{19         : \mbox{\hyperlink{class_sprite}{Sprite}}(}
+\DoxyCodeLine{20             \mbox{\hyperlink{class_sprite}{Sprite}}(\textcolor{stringliteral}{"{}resources/images/white\_ball.png"{}}, initial\_position)}
+\DoxyCodeLine{21             \textcolor{comment}{// number == 0 ?}}
+\DoxyCodeLine{22             \textcolor{comment}{//     Sprite("{}resources/images/white\_ball.png"{}, initial\_position) :}}
+\DoxyCodeLine{23             \textcolor{comment}{//     number == 8 ?}}
+\DoxyCodeLine{24             \textcolor{comment}{//         Sprite("{}resources/images/black\_ball.png"{}, initial\_position) : }}
+\DoxyCodeLine{25             \textcolor{comment}{//         number <= 7 ?}}
+\DoxyCodeLine{26             \textcolor{comment}{//             Sprite("{}resources/images/yellow\_ball.png"{}, initial\_position) :}}
+\DoxyCodeLine{27             \textcolor{comment}{//             Sprite("{}resources/images/red\_ball.png"{}, initial\_position)}}
+\DoxyCodeLine{28         )}
+\DoxyCodeLine{29     \{}
+\DoxyCodeLine{30         std::cout << \textcolor{stringliteral}{"{}Called Ball()"{}} << std::endl;}
+\DoxyCodeLine{31         ball\_number = number;}
+\DoxyCodeLine{32         \mbox{\hyperlink{class_sprite_a7dd9b4dfd0bc7abbf2b321665411be22}{sprite\_scale\_factor}} = 50.0f / \mbox{\hyperlink{class_sprite_aebf55b57f4adf0787931a1fed0d695a1}{sprite\_texture}}.width;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34         body = CreatePhysicsBodyCircle(\{ \mbox{\hyperlink{class_sprite_a2bca7fc096d73323f6984657f7e9b75c}{sprite\_position}}.x + \mbox{\hyperlink{class_sprite_a3a57dd81cb543ceb10be96a79169da1a}{GetWidth}}() / 2, \mbox{\hyperlink{class_sprite_a2bca7fc096d73323f6984657f7e9b75c}{sprite\_position}}.y + \mbox{\hyperlink{class_sprite_a85869aec5a58d19089fa322efc7cef80}{GetHeight}}() / 2 \}, \mbox{\hyperlink{class_sprite_a3a57dd81cb543ceb10be96a79169da1a}{GetWidth}}() / 2, .5f);}
+\DoxyCodeLine{35         body-\/>restitution = 1.0f;}
+\DoxyCodeLine{36         body-\/>dynamicFriction = 0.5f;}
+\DoxyCodeLine{37         body-\/>staticFriction = 0.5f;}
+\DoxyCodeLine{38         body-\/>enabled = \textcolor{keyword}{true};}
+\DoxyCodeLine{39     \}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_ball_ad9567f71b8d1b3a4bab12e1f4bf38bf7}{\string~Ball}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     Vector2 \mbox{\hyperlink{class_ball_ace2f47a18e009fb1c585e25c414ff274}{GetPosition}}();}
+\DoxyCodeLine{44     Vector2 \mbox{\hyperlink{class_ball_ab2bdbd5c2f4c02f9790e20e549525395}{GetVelocity}}();}
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ball_a075f82a076e1ff9e25bd2afe8e834096}{SetPosition}}(Vector2 pos);}
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ball_a6c67f1e5bcf57833d84a83c2aefb969c}{AddForce}}(Vector2 force);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ball_a47cfc4862dad5db1ec0ffbfcc8aca739}{Update}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ball_a60b9ae6c168859bd84d0ede90d97fc86}{Draw}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{50 \};}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{keyword}{class }\mbox{\hyperlink{class_stick}{Stick}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_sprite}{Sprite}}}
+\DoxyCodeLine{53 \{}
+\DoxyCodeLine{54 \textcolor{keyword}{private}:}
+\DoxyCodeLine{55     \textcolor{keyword}{const} Vector2 starting\_stick\_position = \{ \mbox{\hyperlink{config_8h_a498d9f026138406895e9a34b504ac6a6}{WINDOW\_WIDTH}} / 2 -\/ 340, \mbox{\hyperlink{config_8h_a5473cf64fa979b48335079c99532e243}{WINDOW\_HEIGHT}} / 2 \};}
+\DoxyCodeLine{56     \textcolor{keywordtype}{float} force\_amount;}
+\DoxyCodeLine{57     \textcolor{keywordtype}{bool} shown;}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{keyword}{public}:}
+\DoxyCodeLine{60     \mbox{\hyperlink{class_stick_a0167bfb1c215067ddb2f875765fbfbc5}{Stick}}(Vector2 position) : \mbox{\hyperlink{class_sprite}{Sprite}}(\textcolor{stringliteral}{"{}resources/images/stick.png"{}}, position)}
+\DoxyCodeLine{61     \{}
+\DoxyCodeLine{62         \mbox{\hyperlink{class_sprite_a7dd9b4dfd0bc7abbf2b321665411be22}{sprite\_scale\_factor}} = 0.8f;}
+\DoxyCodeLine{63         force\_amount = 30.f;}
+\DoxyCodeLine{64         shown = \textcolor{keyword}{true};}
+\DoxyCodeLine{65     \}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_stick_ab7a8903f50dc93df293ddd8be917fb09}{\string~Stick}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_stick_ac0c1e5afaf7ee7ddffab4cb4844b1d90}{SetShown}}(\textcolor{keywordtype}{bool} value);}
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_stick_a206978bc98a55e188c37495d869aa650}{SetForce}}(\textcolor{keywordtype}{float} value);}
+\DoxyCodeLine{71     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_stick_a93937f1cd6f4b5f35af6bb6529570f00}{GetShown}}();}
+\DoxyCodeLine{72     Vector2 \mbox{\hyperlink{class_stick_a7c5a62c72094dcf4b3ec723b51540da3}{GetCurrentForce}}();}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_stick_a45fa62381b593d2db82c3d32c2c2dd32}{Create}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{75     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_stick_ab174ec2c44ed09cff714bef5a9c8a8d0}{Update}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{76     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_stick_ae67c74de65efefc70bdcc1be2202616f}{Draw}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{77 \};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{keyword}{class }\mbox{\hyperlink{class_table}{Table}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_sprite}{Sprite}}}
+\DoxyCodeLine{80 \{}
+\DoxyCodeLine{81 \textcolor{keyword}{private}:}
+\DoxyCodeLine{82     PhysicsBody top\_wall[2];}
+\DoxyCodeLine{83     PhysicsBody bottom\_wall[2];}
+\DoxyCodeLine{84     PhysicsBody left\_wall[2];}
+\DoxyCodeLine{85     PhysicsBody right\_wall[2];}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     PhysicsBody hole[6];}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{keyword}{public}:}
+\DoxyCodeLine{90     \mbox{\hyperlink{class_table_a049f2e06391781ae255c6698869c4ad1}{Table}}() : \mbox{\hyperlink{class_sprite}{Sprite}}(\textcolor{stringliteral}{"{}resources/images/table.png"{}}, \{\})}
+\DoxyCodeLine{91     \{}
+\DoxyCodeLine{92         \mbox{\hyperlink{class_sprite_a7dd9b4dfd0bc7abbf2b321665411be22}{sprite\_scale\_factor}} = (float)\mbox{\hyperlink{config_8h_a498d9f026138406895e9a34b504ac6a6}{WINDOW\_WIDTH}} / \mbox{\hyperlink{class_sprite_aebf55b57f4adf0787931a1fed0d695a1}{sprite\_texture}}.width;}
+\DoxyCodeLine{93     \}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_table_a14a80cf77ca0612868c7c25eb3eab8d0}{Create}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{96 \};}
+\DoxyCodeLine{97 }
+
+\end{DoxyCode}

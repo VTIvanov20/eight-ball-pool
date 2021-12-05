@@ -1,0 +1,57 @@
+\hypertarget{sprite_8hpp_source}{}\doxysection{sprite.\+hpp}
+\label{sprite_8hpp_source}\index{src/sprite.hpp@{src/sprite.hpp}}
+\mbox{\hyperlink{sprite_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{drawable_8hpp}{drawable.hpp}}"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <raylib.h>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_sprite}{Sprite}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_drawable_manager_1_1_drawable}{DrawableManager::Drawable}}}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{10     Vector2 \mbox{\hyperlink{class_sprite_a2bca7fc096d73323f6984657f7e9b75c}{sprite\_position}};}
+\DoxyCodeLine{11     Texture2D \mbox{\hyperlink{class_sprite_aebf55b57f4adf0787931a1fed0d695a1}{sprite\_texture}};}
+\DoxyCodeLine{12     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_sprite_a7dd9b4dfd0bc7abbf2b321665411be22}{sprite\_scale\_factor}};}
+\DoxyCodeLine{13     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_sprite_ab2b03801f7d1eb2ae0e9ac41caeb38c1}{sprite\_rotation}};}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \mbox{\hyperlink{class_sprite_aca987e006a055cf96f245dd949f1fa07}{Sprite}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* texture\_file\_name, Vector2 initial\_position, \textcolor{keywordtype}{float} scale = 1.0f, \textcolor{keywordtype}{float} rotation = 0.0f) : \mbox{\hyperlink{class_drawable_manager_1_1_drawable_a6931feed795bb6dc15637fd487548816}{Drawable}}()}
+\DoxyCodeLine{17     \{}
+\DoxyCodeLine{18         \mbox{\hyperlink{class_sprite_a2bca7fc096d73323f6984657f7e9b75c}{sprite\_position}} = initial\_position;}
+\DoxyCodeLine{19         \mbox{\hyperlink{class_sprite_aebf55b57f4adf0787931a1fed0d695a1}{sprite\_texture}} = LoadTexture(texture\_file\_name);}
+\DoxyCodeLine{20         \mbox{\hyperlink{class_sprite_ab2b03801f7d1eb2ae0e9ac41caeb38c1}{sprite\_rotation}} = rotation;}
+\DoxyCodeLine{21         }
+\DoxyCodeLine{22         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_sprite_aebf55b57f4adf0787931a1fed0d695a1}{sprite\_texture}}.id == 0)}
+\DoxyCodeLine{23         \{}
+\DoxyCodeLine{24             std::cout << \textcolor{stringliteral}{"{}ERROR: Failed loading texture ("{}} << texture\_file\_name << \textcolor{stringliteral}{"{}), halting process"{}} << std::endl;}
+\DoxyCodeLine{25             exit(-\/1);}
+\DoxyCodeLine{26         \}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \mbox{\hyperlink{class_sprite_a7dd9b4dfd0bc7abbf2b321665411be22}{sprite\_scale\_factor}} = scale;}
+\DoxyCodeLine{29     \}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_sprite_aff0448963fc0515aad87ac0cce6f8bc2}{\string~Sprite}}()}
+\DoxyCodeLine{32     \{}
+\DoxyCodeLine{33         UnloadTexture(\mbox{\hyperlink{class_sprite_aebf55b57f4adf0787931a1fed0d695a1}{sprite\_texture}});}
+\DoxyCodeLine{34     \}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sprite_a54d18a18383575b04f397f5bec3113d0}{SetScale}}(\textcolor{keywordtype}{float} scale);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sprite_a193d51105ebd4cdc129156a9bb8cf130}{SetPosition}}(Vector2 position);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sprite_a5d9dd4cafae7491cfffb48b82c2dd52d}{SetRotation}}(\textcolor{keywordtype}{float} rotation);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{62     Vector2 \mbox{\hyperlink{class_sprite_abc266c5dc4ca8d4c4ff11b4eea3992b8}{GetPosition}}();}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{69     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_sprite_a3a57dd81cb543ceb10be96a79169da1a}{GetWidth}}();}
+\DoxyCodeLine{70     }
+\DoxyCodeLine{76     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_sprite_a85869aec5a58d19089fa322efc7cef80}{GetHeight}}();}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{83     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_sprite_a890d5da0484351bfc69869c1debe9747}{GetRotation}}();}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{88     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sprite_a19dae127e873faf0adf984210bb5edad}{Draw}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{89 \};}
+
+\end{DoxyCode}

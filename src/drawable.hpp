@@ -6,6 +6,7 @@
 
 // DrawableManager - Consists of functions which make drawable management easier
 // The point of this is so you can create Drawables at any point in the program
+
 namespace DrawableManager
 {
     class Drawable
@@ -13,6 +14,10 @@ namespace DrawableManager
     private:
         int id;
 
+        /**
+         * @brief Sets the sprites' IDs. 
+         */
+        
     public:
         Drawable();
         virtual ~Drawable() = default;
@@ -24,15 +29,50 @@ namespace DrawableManager
         int GetID()
         {
             return id;
+
+            /**
+             * @brief Gets the IDs of the sprites.
+             * 
+             * @returns int id
+             */
         }
     };
     
-    void CreateAll(); // Calls Create function in every Drawable in drawablePool
-    void UpdateAll(); // Calls Update function in every Drawable in drawablePool
-    void DrawAll(); // Calls Draw function in every Drawable in drawablePool
+    /**
+     * @brief Calls the Create() function for every Drawable in the drawablePool
+     */
+    void CreateAll();
 
-    void DestroyAllDrawables(); // Destroys every Drawable in drawablePool and clears drawablePool
-    void DestroyDrawableFromID(int id); // Iterates through drawablePool and destroys the Drawable corresponding to the ID
+    /**
+     * @brief Calls the Update() function for every Drawable in the drawablePool
+     */
+    void UpdateAll(); 
 
-    Drawable* GetDrawableFromID(int id); // Iterates through drawablePool and gets the Drawable corresponding to the ID (returns nullptr if ID is non-existent)
+    /**
+     * @brief Calls the Draw() function for every Drawable in the drawablePool
+     */
+    void DrawAll();
+
+    /**
+     * @brief Destroys every Drawable in the drawablePool and clears drawablePool
+     */
+    void DestroyAllDrawables();
+
+    /**
+     * @brief Iterates through drawablePool and destroys the Drawable corresponding to the ID
+     * 
+     * @param id This describes the sprite's id
+     */
+    void DestroyDrawableFromID(int id);
+
+    /**
+     * @brief Get the Drawable From ID object
+     * 
+     * Iterates through drawablePool and gets the Drawable corresponding to the ID (returns nullptr if ID is non-existent)
+     * 
+     * @param id This describes the sprite's id
+     * 
+     * @return Drawable*
+     */
+    Drawable* GetDrawableFromID(int id);
 };

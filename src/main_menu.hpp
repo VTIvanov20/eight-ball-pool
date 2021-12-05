@@ -20,6 +20,13 @@ public:
     MainMenu() = default;
     virtual ~MainMenu() = default;
 
+    /**
+     * @brief Initializes the Main Menu
+     */
     void Create() override;
+
+    /**
+     * @brief Checks for updates in the Main Menu
+     */
     void Update() override;
 };

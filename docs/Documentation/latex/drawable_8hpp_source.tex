@@ -1,0 +1,49 @@
+\hypertarget{drawable_8hpp_source}{}\doxysection{drawable.\+hpp}
+\label{drawable_8hpp_source}\index{src/drawable.hpp@{src/drawable.hpp}}
+\mbox{\hyperlink{drawable_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <raylib.h>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{// DrawableManager -\/ Consists of functions which make drawable management easier}}
+\DoxyCodeLine{8 \textcolor{comment}{// The point of this is so you can create Drawables at any point in the program}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_drawable_manager}{DrawableManager}}}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12     \textcolor{keyword}{class }\mbox{\hyperlink{class_drawable_manager_1_1_drawable}{Drawable}}}
+\DoxyCodeLine{13     \{}
+\DoxyCodeLine{14     \textcolor{keyword}{private}:}
+\DoxyCodeLine{15         \textcolor{keywordtype}{int} id;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{21     \textcolor{keyword}{public}:}
+\DoxyCodeLine{22         \mbox{\hyperlink{class_drawable_manager_1_1_drawable_a6931feed795bb6dc15637fd487548816}{Drawable}}();}
+\DoxyCodeLine{23         \textcolor{keyword}{virtual} \mbox{\hyperlink{class_drawable_manager_1_1_drawable_af6343317dfdeb3f52e5825c77c997a8a}{\string~Drawable}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drawable_manager_1_1_drawable_aa38caf675bde9d4b1af34d46f13f7d89}{Create}}() \{\}; \textcolor{comment}{// Gets called once whenever the program is initializing itself}}
+\DoxyCodeLine{26         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drawable_manager_1_1_drawable_aa3e819b23a61a5f882470141fbdb7a22}{Update}}() \{\}; \textcolor{comment}{// Gets called once per frame}}
+\DoxyCodeLine{27         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drawable_manager_1_1_drawable_a3bebfc48f7ebda143664e8e2bc8a6b15}{Draw}}() \{\}; \textcolor{comment}{// Gets called once per frame (after Update)}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_drawable_manager_1_1_drawable_aff6b03bd43751fb3feda5b334d08deed}{GetID}}()}
+\DoxyCodeLine{30         \{}
+\DoxyCodeLine{31             \textcolor{keywordflow}{return} id;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{38         \}}
+\DoxyCodeLine{39     \};}
+\DoxyCodeLine{40     }
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_drawable_manager_ad8cfa460b50c729f1a9465c59c8b620c}{CreateAll}}();}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_drawable_manager_aa6827c005fae0a2d9259a522d25bd6ee}{UpdateAll}}(); }
+\DoxyCodeLine{50 }
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_drawable_manager_afd00bb2ccf0584e40942a726cb0fdd87}{DrawAll}}();}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{59     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_drawable_manager_adb31226a0e6c99ca8ee91e7bf9a882e9}{DestroyAllDrawables}}();}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{66     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_drawable_manager_a34d5971cb7b870e4b5b5f8626eebe207}{DestroyDrawableFromID}}(\textcolor{keywordtype}{int} \textcolor{keywordtype}{id});}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{77     Drawable* \mbox{\hyperlink{namespace_drawable_manager_aaf055b95106373e1aeca163890c94534}{GetDrawableFromID}}(\textcolor{keywordtype}{int} \textcolor{keywordtype}{id});}
+\DoxyCodeLine{78 \};}
+
+\end{DoxyCode}
