@@ -10,14 +10,53 @@ Vector2 Ball::GetVelocity()
     return { body->velocity.x, body->velocity.y };
 }
 
+void Ball::EnablePhysicsBody()
+{
+    body->enabled = true;
+}
+
+void Ball::DisablePhysicsBody()
+{
+    body->enabled = false;
+    body->velocity = { 0.f, 0.f };
+    body->orient = 0.f;
+}
+
 void Ball::SetPosition(Vector2 position)
 {
     body->position = { position.x + GetWidth() / 2, position.y + GetHeight() / 2 };
 }
 
+int Ball::GetNumber()
+{
+    return ball_number;
+}
+
 void Ball::Update()
 {
-    
+    if (body->velocity.x != 0)
+    {
+        if (body->velocity.x < 0)
+            body->velocity.x += 0.005f;
+        
+        if (body->velocity.x > 0)
+            body->velocity.x -= 0.005f;
+    }
+
+    if (body->velocity.y != 0)
+    {
+        if (body->velocity.y < 0)
+            body->velocity.y += 0.005f;
+        
+        if (body->velocity.y > 0)
+            body->velocity.y -= 0.005f;
+    }
+
+    if ((body->velocity.x < 0.005f && body->velocity.x > -0.005f) && (body->velocity.y < 0.005f && body->velocity.y > -0.005f))
+    {
+        body->velocity.x = 0.0f;
+        body->velocity.y = 0.0f;
+    }
 };
 
 void Ball::Draw()
@@ -85,16 +124,6 @@ void Ball::AddForce(Vector2 force)
 
 void Table::Create()
 {
-    Vector2 position[6] =
-    {
-        { 25, 25 },
-        { WINDOW_WIDTH / 2, -5 },
-        { WINDOW_WIDTH - 25, 25 },
-        { 25, WINDOW_HEIGHT - 25 - 15 },
-        { WINDOW_WIDTH / 2, WINDOW_HEIGHT + 5 - 15 },
-        { WINDOW_WIDTH - 25, WINDOW_HEIGHT - 25 - 15 }
-    };
-
     top_wall[0] = CreatePhysicsBodyRectangle({ WINDOW_WIDTH / 4 + 32.5f, 25 }, WINDOW_WIDTH / 2 - 125, 50, 1);
     top_wall[1] = CreatePhysicsBodyRectangle({ WINDOW_WIDTH - WINDOW_WIDTH / 4 - 32.5f, 25 }, WINDOW_WIDTH / 2 - 125, 50, 1);
 
@@ -106,12 +135,6 @@ void Table::Create()
 
     right_wall[0] = CreatePhysicsBodyRectangle({ WINDOW_WIDTH - 25, WINDOW_HEIGHT / 2 - 7.5f }, 50, WINDOW_HEIGHT - 210, 1);
     right_wall[1] = CreatePhysicsBodyRectangle({ WINDOW_WIDTH - 25, WINDOW_HEIGHT / 2 - 7.5f }, 50, WINDOW_HEIGHT - 210, 1);
-
-    for (int i = 0; i < 6; i++)
-    {
-        hole[i] = CreatePhysicsBodyCircle(position[i], 30, 1);
-        hole[i]->enabled = false;
-    }
 
     top_wall[0]->enabled = false;
     top_wall[1]->enabled = false;
@@ -147,32 +170,32 @@ void Stick::Create()
 
 void Stick::Update()
 {
-    if (IsKeyDown(KEY_Q) && shown)
+    if (IsKeyDown(KEY_LEFT) && shown)
         sprite_rotation--;
     
-    if (IsKeyDown(KEY_E) && shown)
+    if (IsKeyDown(KEY_RIGHT) && shown)
         sprite_rotation++;
 
+    if (IsKeyDown(KEY_DOWN) && force_amount >= 30.0f && shown)
+        force_amount--;
+    
+    if (IsKeyDown(KEY_UP) && force_amount <= 80.0f && shown)
+        force_amount++;
+
     if (IsKeyPressed(KEY_F1) && shown)
-        SetRotation(0.0);
+        sprite_rotation = 0.0;
     
     if (IsKeyPressed(KEY_F2) && shown)
-        SetRotation(90.0);
+        sprite_rotation = 90.0;
 
     if (IsKeyPressed(KEY_F3) && shown)
-        SetRotation(180.0);
+        sprite_rotation = 180.0;
     
     if (IsKeyPressed(KEY_F4) && shown)
-        SetRotation(270.0);
+        sprite_rotation = 270.0;
 
     if (sprite_rotation > 360) sprite_rotation = 0;
     if (sprite_rotation < 0) sprite_rotation = 359;
-    
-    if (IsKeyDown(KEY_A) && force_amount >= 30.0f && shown)
-        force_amount--;
-    
-    if (IsKeyDown(KEY_D) && force_amount <= 80.0f && shown)
-        force_amount++;
 };
 
 void Stick::Draw()

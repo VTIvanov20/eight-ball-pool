@@ -45,32 +45,190 @@ void GameScene::Create()
 
             // gets last element (in iterator) of std::list
             // converts iterator to type
-            Ball* ballPtr = *(--balls.end());
+            Ball* ball_ptr = *(--balls.end());
 
-            ballPtr->SetPosition({
-                starting_ball_position.x - ballPtr->GetWidth() / 2 + ballPtr->GetWidth() * (i - 1) - ballPtr->GetWidth() * 2,
-                starting_ball_position.y - ballPtr->GetHeight() / 2 + j * ballPtr->GetHeight()
+            ball_ptr->SetPosition({
+                starting_ball_position.x - ball_ptr->GetWidth() / 2 + ball_ptr->GetWidth() * (i - 1) - ball_ptr->GetWidth() * 2,
+                starting_ball_position.y - ball_ptr->GetHeight() / 2 + j * ball_ptr->GetHeight()
             });
+
+            ball_ptr->DisablePhysicsBody();
         }
     }
 
-    white_ball = new Ball(0, { 350, 350 });
+    white_ball = new Ball(0, starting_white_ball_position);
     stick = new Stick(white_ball->GetPosition());
+
+    user_interface = new HUD();
 
     white_ball->SetPosition({
         350 - white_ball->GetWidth() / 2,
         350 - white_ball->GetHeight() / 2
     });
+
+    white_ball->DisablePhysicsBody();
 };
 
 void GameScene::Update()
 {
-    // Stick Position
+    // std::cout << white_ball->GetVelocity().x << " "<< white_ball->GetVelocity().y << std::endl;
+
+    user_interface->UpdateInternalState(GetTableState());
+
     Vector2 white_ball_pos = white_ball->GetPosition();
     stick->SetPosition({ white_ball_pos.x + white_ball->GetWidth() / 2, white_ball_pos.y + white_ball->GetHeight() / 2 });
 
+    if (player_winner != Turn::UNKNOWN)
+        return;
+    
+    const Vector2 position[6] =
+    {
+        { 25, 25 },
+        { WINDOW_WIDTH / 2, -5 },
+        { WINDOW_WIDTH - 25, 25 },
+        { 25, WINDOW_HEIGHT - 25 - 15 },
+        { WINDOW_WIDTH / 2, WINDOW_HEIGHT + 5 - 15 },
+        { WINDOW_WIDTH - 25, WINDOW_HEIGHT - 25 - 15 }
+    };
+
+    // Checks whether the white ball touches any of the holes
+    for (int i = 0; i < 6; i++)
+    {
+        if (CheckCollisionCircles(position[i], 30.f, { white_ball->GetPosition().x + 25.f, white_ball->GetPosition().y + 25.f }, white_ball->GetWidth()))
+        {
+            white_ball->DisablePhysicsBody();
+            white_ball->SetPosition({ -white_ball->GetWidth() * 2, -white_ball->GetHeight() * 2 });
+
+            if (current_turn != Turn::UNKNOWN)
+            {
+                current_turn = (Turn)!current_turn;
+                is_foul = true;
+            }
+        }
+    }
+
+    bool any_balls_in_flag = false;
+
+    // Checks whether all of the other balls touch any of the holes
+    for (auto ball : balls)
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            if (CheckCollisionCircles(position[i], 30.f, { ball->GetPosition().x + 25.f, ball->GetPosition().y + 25.f }, ball->GetWidth()))
+            {
+                ball->DisablePhysicsBody();
+                ball->SetPosition({ -ball->GetWidth() * 2, -ball->GetHeight() * 2 });
+
+                if (ball->GetNumber() < 8)
+                    small_balls_inside++;
+                else if (ball->GetNumber() > 8)
+                    big_balls_inside++;
+
+                if (current_turn == Turn::UNKNOWN)
+                {
+                    if (ball->GetNumber() < 8)
+                        current_turn = Turn::SMALL_BALL;
+                    else if (ball->GetNumber() > 8)
+                        current_turn = Turn::BIG_BALL;
+                }
+                else
+                {
+                    if (ball->GetNumber() == 8)
+                    {
+                        if (current_turn == Turn::SMALL_BALL && small_balls_inside == 7)
+                            player_winner = Turn::SMALL_BALL;
+                        else
+                            player_winner = Turn::BIG_BALL;
+                        
+                        if (current_turn == Turn::BIG_BALL && big_balls_inside == 7)
+                            player_winner = Turn::BIG_BALL;
+                        else
+                            player_winner = Turn::SMALL_BALL;
+                    }
+
+                    if (current_turn == Turn::SMALL_BALL && ball->GetNumber() > 8)
+                    {
+                        any_balls_in_flag = true;
+                    }
+                    else if (current_turn == Turn::BIG_BALL && ball->GetNumber() < 8)
+                    {
+                        any_balls_in_flag = true;
+                    }
+
+                    if (current_turn == Turn::SMALL_BALL && ball->GetNumber() > 8)
+                    {
+                        is_foul = true;
+                        current_turn = Turn::BIG_BALL;
+                        white_ball->SetPosition({ -white_ball->GetWidth() * 2, -white_ball->GetHeight() * 2 });
+                        white_ball->DisablePhysicsBody();
+                    }
+                    else if (current_turn == Turn::BIG_BALL && ball->GetNumber() < 8)
+                    {
+                        is_foul = true;
+                        current_turn = Turn::SMALL_BALL;
+                        white_ball->SetPosition({ -white_ball->GetWidth() * 2, -white_ball->GetHeight() * 2 });
+                        white_ball->DisablePhysicsBody();
+                    }
+                }
+            }
+        }
+    }
+
+    if (is_foul)
+    {
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        {
+            bool can_place = true;
+            for (auto ball : balls)
+            {
+                if (CheckCollisionCircles(
+                    { GetMousePosition().x - ball->GetWidth() / 2, GetMousePosition().y - ball->GetHeight() / 2 },
+                    white_ball->GetWidth() / 2, ball->GetPosition(), ball->GetWidth() / 2
+                )) can_place = false;
+            }
+
+            if (can_place)
+            {
+                is_foul = false;
+                current_turn = (Turn)!current_turn;
+                white_ball->SetPosition({
+                    GetMousePosition().x - white_ball->GetWidth() / 2,
+                    GetMousePosition().y - white_ball->GetHeight() / 2
+                });
+            }
+        }
+    }
+
+    // std::cout << any_balls_in_flag << std::endl;
+
+    if (white_ball->GetVelocity().x == 0 && white_ball->GetVelocity().y == 0 && !is_foul)
+    {
+        if (!any_balls_in_flag && !stick->GetShown() && current_turn != Turn::UNKNOWN)
+        {
+            current_turn = (Turn)!current_turn;
+        }
+    
+        stick->SetShown(true);
+        white_ball->DisablePhysicsBody();
+
+        for (auto ball : balls)
+            ball->DisablePhysicsBody();
+
+        if (white_ball->GetPosition().x < 0)
+            white_ball->SetPosition({
+                starting_white_ball_position.x - white_ball->GetWidth() / 2,
+                starting_white_ball_position.y - white_ball->GetHeight() / 2
+            });
+    }
+    else stick->SetShown(false);
+
     if (IsKeyPressed(KEY_SPACE) && stick->GetShown())
     {
+        white_ball->EnablePhysicsBody();
+
+        for (auto ball : balls)
+            ball->EnablePhysicsBody();
+
         // Ball
         white_ball->AddForce(stick->GetCurrentForce());
 
@@ -78,7 +236,16 @@ void GameScene::Update()
         stick->SetRotation(0.0f);
         stick->SetForce(30.0f);
     }
-
-    if (white_ball->GetVelocity().x == 0 && white_ball->GetVelocity().y == 0) stick->SetShown(true);
-    else stick->SetShown(false);
 };
+
+TableState GameScene::GetTableState()
+{
+    return
+    {
+        current_turn,
+        player_winner,
+        is_foul,
+        small_balls_inside,
+        big_balls_inside
+    };
+}

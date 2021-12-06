@@ -131,7 +131,7 @@ namespace GameManager
             DrawText(std::to_string(GetFPS()).c_str(), 0, 0, 20, GREEN);
 
             // Draw Mouse Position
-            DrawText(TextFormat("%.0f, %.0f", GetMousePosition().x, GetMousePosition().y), 0, WINDOW_HEIGHT - 20, 20, GREEN);
+            // DrawText(TextFormat("%.0f, %.0f", GetMousePosition().x, GetMousePosition().y), 0, WINDOW_HEIGHT - 20, 20, GREEN);
         EndDrawing();
     }
     

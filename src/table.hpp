@@ -16,22 +16,13 @@ private:
 
 public:
     Ball(int number, Vector2 initial_position) 
-        : Sprite(
-            Sprite("resources/images/white_ball.png", initial_position)
-            // number == 0 ?
-            //     Sprite("resources/images/white_ball.png", initial_position) :
-            //     number == 8 ?
-            //         Sprite("resources/images/black_ball.png", initial_position) : 
-            //         number <= 7 ?
-            //             Sprite("resources/images/yellow_ball.png", initial_position) :
-            //             Sprite("resources/images/red_ball.png", initial_position)
-        )
+        : Sprite("resources/images/white_ball.png", initial_position)
     {
         std::cout << "Called Ball()" << std::endl;
         ball_number = number;
         sprite_scale_factor = 50.0f / sprite_texture.width;
 
-        body = CreatePhysicsBodyCircle({ sprite_position.x + GetWidth() / 2, sprite_position.y + GetHeight() / 2 }, GetWidth() / 2, .5f);
+        body = CreatePhysicsBodyCircle({ sprite_position.x + GetWidth() / 2, sprite_position.y + GetHeight() / 2 }, GetWidth() / 2, 1.f);
         body->restitution = 1.0f;
         body->dynamicFriction = 0.5f;
         body->staticFriction = 0.5f;
@@ -44,6 +35,11 @@ public:
     Vector2 GetVelocity();
     void SetPosition(Vector2 pos);
     void AddForce(Vector2 force);
+
+    void EnablePhysicsBody();
+    void DisablePhysicsBody();
+
+    int GetNumber();
 
     void Update() override;
     void Draw() override;
@@ -83,8 +79,6 @@ private:
     PhysicsBody bottom_wall[2];
     PhysicsBody left_wall[2];
     PhysicsBody right_wall[2];
-
-    PhysicsBody hole[6];
 
 public:
     Table() : Sprite("resources/images/table.png", {})
