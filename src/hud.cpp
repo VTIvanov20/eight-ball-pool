@@ -2,6 +2,7 @@
 
 void HUD::Draw()
 {
+    // If the game has been won, write the winner text and delete all other text
     if (hasWon)
     {
         switch(state.player_winner)
@@ -17,6 +18,7 @@ void HUD::Draw()
             break;
         }
 
+        // Stop all the writing here
         return;
     }
 
@@ -33,6 +35,7 @@ void HUD::Draw()
         break;
     }
 
+    // If there is a foul, write text that says there is one
     if (state.is_foul)
     {
         switch (state.current_turn)
@@ -51,6 +54,7 @@ void HUD::Draw()
         DrawCircleV(GetMousePosition(), 25.f, WHITE);
     }
     
+    // Bring the balls amount text position down if there is a foul
     Vector2 balls_amount_text_position;
     
     if (state.is_foul)
@@ -68,27 +72,32 @@ void HUD::Draw()
     );
 }
 
+// Update TableState
 void HUD::UpdateInternalState(TableState value)
 {
     state = value;
 }
 
+// Set the current Player
 void HUD::SetPlayer(bool value)
 {
     player = value;
 }
 
+// Set the boolean variable if the game has been won
 void HUD::SetHasWon()
 {
     player = !player;
     hasWon = true;
 }
 
+// Returns which player is in turn right now
 bool HUD::GetPlayer()
 {
     return player;
 }
 
+// Returns the boolean variable if the game has been won
 bool HUD::GetHasWon()
 {
     return hasWon;

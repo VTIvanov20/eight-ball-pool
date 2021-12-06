@@ -2,21 +2,25 @@
 
 Vector2 Ball::GetPosition()
 {
+    // Returns the position of a ball
     return { body->position.x - GetWidth() / 2, body->position.y - GetHeight() / 2 };
 }
 
 Vector2 Ball::GetVelocity()
 {
+    // Returns the velocity of a ball
     return { body->velocity.x, body->velocity.y };
 }
 
 void Ball::EnablePhysicsBody()
 {
+    // Enables the physicsbody of a ball
     body->enabled = true;
 }
 
 void Ball::DisablePhysicsBody()
 {
+    // Disables the physicsbody of a ball and sets it velocity and orient to 0
     body->enabled = false;
     body->velocity = { 0.f, 0.f };
     body->orient = 0.f;
@@ -24,16 +28,19 @@ void Ball::DisablePhysicsBody()
 
 void Ball::SetPosition(Vector2 position)
 {
+    // Sets the position of a ball
     body->position = { position.x + GetWidth() / 2, position.y + GetHeight() / 2 };
 }
 
 int Ball::GetNumber()
 {
+    // Returns the ball number of a ball
     return ball_number;
 }
 
 void Ball::Update()
 {
+    // Friction
     if (body->velocity.x != 0)
     {
         if (body->velocity.x < 0)
@@ -80,6 +87,7 @@ void Ball::Draw()
         { 140, 32, 20, 255 }
     };
 
+    // Draws the ball with the corresponding color for the ball number
     DrawTextureEx(
         sprite_texture,
         { body->position.x - GetWidth() / 2, body->position.y - GetHeight() / 2 },
@@ -88,6 +96,7 @@ void Ball::Draw()
         colors[ball_number]
     );
 
+    // If the ball is the white ball doesn't write the number of the ball
     if (ball_number != 0)
     {
         DrawCircle(
@@ -109,11 +118,13 @@ void Ball::Draw()
 
 void Ball::AddForce(Vector2 force)
 {
+    // Adds force to a ball
     PhysicsAddForce(body, force);
 }
 
 void Table::Create()
 {
+    // Creates colliders for the table
     top_wall[0] = CreatePhysicsBodyRectangle({ WINDOW_WIDTH / 4 + 32.5f, 25 }, WINDOW_WIDTH / 2 - 125, 50, 1);
     top_wall[1] = CreatePhysicsBodyRectangle({ WINDOW_WIDTH - WINDOW_WIDTH / 4 - 32.5f, 25 }, WINDOW_WIDTH / 2 - 125, 50, 1);
 
@@ -126,6 +137,7 @@ void Table::Create()
     right_wall[0] = CreatePhysicsBodyRectangle({ WINDOW_WIDTH - 25, WINDOW_HEIGHT / 2 - 7.5f }, 50, WINDOW_HEIGHT - 210, 1);
     right_wall[1] = CreatePhysicsBodyRectangle({ WINDOW_WIDTH - 25, WINDOW_HEIGHT / 2 - 7.5f }, 50, WINDOW_HEIGHT - 210, 1);
 
+    // Enables the colliders and makes them unmovable
     top_wall[0]->enabled = false;
     top_wall[1]->enabled = false;
 
@@ -138,6 +150,7 @@ void Table::Create()
     right_wall[0]->enabled = false;
     right_wall[1]->enabled = false;
 
+    // Sets the restitution (bounciness) of the walls to 1
     top_wall[0]->restitution = 1;
     top_wall[1]->restitution = 1;
 
@@ -153,6 +166,7 @@ void Table::Create()
 
 void Stick::Create()
 {
+    // Creates the stick and sets its scale to 0.7 and rotation to 180.0
     std::cout << "Called Stick::Create()" << std::endl;
     SetScale(0.7f);
     SetRotation(180.0f);
@@ -160,6 +174,7 @@ void Stick::Create()
 
 void Stick::Update()
 {
+    // Rotates the stick and increases and reduces force
     if (IsKeyDown(KEY_LEFT) && shown)
         sprite_rotation--;
     
@@ -190,6 +205,7 @@ void Stick::Update()
 
 void Stick::Draw()
 {
+    // If the stick is shown, renders it
     if (shown)
     {
         DrawLineV({ GetPosition().x, GetPosition().y }, { GetCurrentForce().x + GetPosition().x, GetCurrentForce().y + GetPosition().y }, WHITE);
@@ -207,21 +223,25 @@ void Stick::Draw()
 
 void Stick::SetShown(bool value)
 {
+    // Sets the boolean variable shown of the stick
     shown = value;
 }
 
 void Stick::SetForce(float value)
 {
+    // Sets the force amount of the hit
     force_amount = value;
 }
 
 bool Stick::GetShown()
 {
+    // Returns whether or not the stick is shown
     return shown;
 }
 
 Vector2 Stick::GetCurrentForce()
 {
+    // Sets the force and returns the hit trajectory based on the rotation
     float factor = force_amount / 30;
     float force = force_amount * 50 * factor;
 

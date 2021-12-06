@@ -13,12 +13,15 @@
 
 int main()
 {
+    // Initializes the Window
     GameManager::Initialize();
     
     while (!GameManager::ShouldQuit())
     {
+        // Updates the current scene while the game hasn't been quit yet
         GameManager::Update();
     }
 
+    // After the game has been quit, deinitializes the Window
     GameManager::Deinitialize();
 }

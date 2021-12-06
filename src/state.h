@@ -2,6 +2,7 @@
 
 enum Turn
 {
+    // Enumerator of the possible turns
     UNKNOWN = -1,
     SMALL_BALL = 0,
     BIG_BALL = 1,
@@ -9,6 +10,7 @@ enum Turn
 
 struct TableState
 {
+    // Table state struct
     Turn current_turn;
     Turn player_winner;
     bool is_foul;
