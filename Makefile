@@ -26,9 +26,9 @@ OBJ=$(patsubst %, $(ODIR)/%, $(_OBJ))
 
 # Libraries
 ifeq ($(OS),Windows_NT)
-	LIBS=-lraylib -lopengl32 -lgdi32 -lwinmm
+	LIBS=-mwindows -lraylib -lopengl32 -lgdi32 -lwinmm
 else
-	LIBS=-lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+	LIBS=-lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -static-libgcc -static-libstdc++
 endif
 
 # Compile .cpp files to .o files
