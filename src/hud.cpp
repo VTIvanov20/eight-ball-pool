@@ -2,7 +2,7 @@
 
 void HUD::Draw()
 {
-    if (state.player_winner)
+    if (state.player_winner != Turn::UNKNOWN)
     {
         switch(state.player_winner)
         {
