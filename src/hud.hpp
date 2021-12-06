@@ -10,6 +10,7 @@ private:
     TableState state;
 
     bool player = false;
+    bool hasWon = false;
 
 public:
     HUD() : Drawable()
@@ -24,8 +25,10 @@ public:
 
     void UpdateInternalState(TableState value);
     void SetPlayer(bool value);
+    void SetHasWon();
 
     bool GetPlayer();
+    bool GetHasWon();
 
     void Draw() override;
 };

@@ -2,7 +2,7 @@
 
 void HUD::Draw()
 {
-    if (state.player_winner != Turn::UNKNOWN)
+    if (hasWon)
     {
         switch(state.player_winner)
         {
@@ -78,7 +78,18 @@ void HUD::SetPlayer(bool value)
     player = value;
 }
 
+void HUD::SetHasWon()
+{
+    player = !player;
+    hasWon = true;
+}
+
 bool HUD::GetPlayer()
 {
     return player;
+}
+
+bool HUD::GetHasWon()
+{
+    return hasWon;
 }

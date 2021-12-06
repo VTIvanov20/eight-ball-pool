@@ -97,14 +97,12 @@ void GameScene::Update()
             white_ball->DisablePhysicsBody();
             white_ball->SetPosition({ -white_ball->GetWidth() * 2, -white_ball->GetHeight() * 2 });
 
-            if (current_turn != Turn::UNKNOWN)
+            if (!user_interface->GetHasWon())
             {
-                current_turn = (Turn)!current_turn;
-                is_foul = true;
-            }
-            else
-            {
-                current_turn = Turn::UNKNOWN;
+                if (current_turn != Turn::UNKNOWN)
+                    current_turn = (Turn)!current_turn;
+                else
+                    current_turn = Turn::UNKNOWN;
                 is_foul = true;
             }
         }
@@ -136,26 +134,6 @@ void GameScene::Update()
                 }
                 else
                 {
-                    if (ball->GetNumber() == 8)
-                    {
-                        if (current_turn == Turn::SMALL_BALL && small_balls_inside == 7)
-                            player_winner = Turn::SMALL_BALL;
-                        else if (!any_balls_in_flag)
-                            player_winner = Turn::BIG_BALL;
-                        else
-                            player_winner = Turn::SMALL_BALL;
-                        
-                        if (current_turn == Turn::BIG_BALL && big_balls_inside == 7)
-                            player_winner = Turn::BIG_BALL;
-                        else if (!any_balls_in_flag)
-                            player_winner = Turn::SMALL_BALL;
-                        else
-                            player_winner = Turn::BIG_BALL;
-
-                        if (current_turn == Turn::UNKNOWN)
-                            player_winner = Turn::UNKNOWN;
-                    }
-
                     if (current_turn == Turn::SMALL_BALL && ball->GetNumber() > 8)
                     {
                         is_foul = true;
@@ -171,6 +149,28 @@ void GameScene::Update()
                         white_ball->DisablePhysicsBody();
                     }
                 }
+
+                if (ball->GetNumber() == 8)
+                {
+                    if (current_turn == Turn::SMALL_BALL && small_balls_inside == 7)
+                        player_winner = Turn::SMALL_BALL;
+                    else if (!any_balls_in_flag)
+                        player_winner = Turn::BIG_BALL;
+                    else
+                        player_winner = Turn::SMALL_BALL;
+                        
+                    if (current_turn == Turn::BIG_BALL && big_balls_inside == 7)
+                        player_winner = Turn::BIG_BALL;
+                    else if (!any_balls_in_flag)
+                        player_winner = Turn::SMALL_BALL;
+                    else
+                        player_winner = Turn::BIG_BALL;
+
+                    if (current_turn == Turn::UNKNOWN)
+                        player_winner = Turn::UNKNOWN;
+
+                    user_interface->SetHasWon();
+                }
             }
         }
     }
@@ -185,6 +185,14 @@ void GameScene::Update()
                 if (CheckCollisionCircles(
                     { GetMousePosition().x - ball->GetWidth() / 2, GetMousePosition().y - ball->GetHeight() / 2 },
                     white_ball->GetWidth() / 2, ball->GetPosition(), ball->GetWidth() / 2
+                )) can_place = false;
+            }
+
+            for (int i = 0; i < 6; i++)
+            {
+                if (CheckCollisionCircles(
+                    position[i], 30.f,
+                    { GetMousePosition().x - white_ball->GetWidth() / 2, GetMousePosition().y - white_ball->GetHeight() / 2 }, white_ball->GetWidth() / 2
                 )) can_place = false;
             }
 
@@ -238,7 +246,7 @@ void GameScene::Update()
         white_ball->AddForce(stick->GetCurrentForce());
 
         // Stick
-        stick->SetRotation(0.0f);
+        stick->SetRotation(180.0f);
         stick->SetForce(30.0f);
     }
 };
