@@ -9,6 +9,8 @@ private:
     int timer;
     TableState state;
 
+    bool player = false;
+
 public:
     HUD() : Drawable()
     {
@@ -21,6 +23,9 @@ public:
     ~HUD() = default;
 
     void UpdateInternalState(TableState value);
+    void SetPlayer(bool value);
+
+    bool GetPlayer();
 
     void Draw() override;
 };

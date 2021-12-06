@@ -6,13 +6,15 @@ void HUD::Draw()
     {
         switch(state.player_winner)
         {
+        case Turn::UNKNOWN:
+            DrawText(TextFormat("Player %i is the winner!", player + 1), 10, 10, 50, WHITE);
+            break;
         case Turn::SMALL_BALL:
-            DrawText("Small ball player is the winner!", 0, 0, 50, WHITE);
+            DrawText("Small ball player is the winner!", 10, 10, 50, WHITE);
             break;
         case Turn::BIG_BALL:
-            DrawText("Big ball player is the winner!", 0, 0, 50, WHITE);
+            DrawText("Big ball player is the winner!", 10, 10, 50, WHITE);
             break;
-        default: break;
         }
 
         return;
@@ -21,13 +23,13 @@ void HUD::Draw()
     switch (state.current_turn)
     {
     case Turn::UNKNOWN:
-        DrawText("Unknown Turn", 0, 0, 30, WHITE);
+        DrawText(TextFormat("Player %i's Turn", player + 1), 10, 10, 30, WHITE);
         break;
     case Turn::SMALL_BALL:
-        DrawText("Small ball player's Turn", 0, 0, 30, WHITE);
+        DrawText("Small ball player's Turn", 10, 10, 30, WHITE);
         break;
     case Turn::BIG_BALL:
-        DrawText("Big ball player's Turn", 0, 0, 30, WHITE);
+        DrawText("Big ball player's Turn", 10, 10, 30, WHITE);
         break;
     }
 
@@ -35,13 +37,15 @@ void HUD::Draw()
     {
         switch (state.current_turn)
         {
+        case Turn::UNKNOWN:
+            DrawText(TextFormat("Foul! Player %i gets to place the white ball.", player + 1), 10, 45, 20, WHITE);
+            break;
         case Turn::SMALL_BALL:
-            DrawText("Foul! Small ball player gets to place the white ball", 0, 30, 20, WHITE);
+            DrawText("Foul! Small ball player gets to place the white ball.", 10, 45, 20, WHITE);
             break;
         case Turn::BIG_BALL:
-            DrawText("Foul! Big ball player gets to place the white ball", 0, 30, 20, WHITE);
+            DrawText("Foul! Big ball player gets to place the white ball.", 10, 45, 20, WHITE);
             break;
-        default: break;
         }
 
         DrawCircleV(GetMousePosition(), 25.f, WHITE);
@@ -50,16 +54,16 @@ void HUD::Draw()
     Vector2 balls_amount_text_position;
     
     if (state.is_foul)
-        balls_amount_text_position = {0, 50};
+        balls_amount_text_position = {10, 72.5f};
     else
-        balls_amount_text_position = {0, 30};
+        balls_amount_text_position = {10, 50};
 
     DrawText(
         TextFormat(
             "Small Balls in: %i\nBig Balls in: %i",
             state.small_balls_inside, state.big_balls_inside
         ),
-        balls_amount_text_position.x, balls_amount_text_position.y, 10,
+        balls_amount_text_position.x, balls_amount_text_position.y, 12,
         WHITE
     );
 }
@@ -67,4 +71,14 @@ void HUD::Draw()
 void HUD::UpdateInternalState(TableState value)
 {
     state = value;
+}
+
+void HUD::SetPlayer(bool value)
+{
+    player = value;
+}
+
+bool HUD::GetPlayer()
+{
+    return player;
 }

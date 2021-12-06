@@ -61,7 +61,7 @@ void Ball::Update()
 
 void Ball::Draw()
 {
-    Color colors[100] = {
+    Color colors[20] = {
         WHITE,
         { 255, 240, 0, 255 },
         { 72, 114, 212, 255 },
@@ -105,16 +105,6 @@ void Ball::Draw()
             10, BLACK
         );
     }
-
-    DrawText(
-        TextFormat(
-            "pos(%0.f, %0.f)\nvel(%0.f, %0.f)",
-            GetPosition().x, GetPosition().y,
-            body->velocity.x, body->velocity.y
-        ),
-        GetPosition().x + GetWidth(), GetPosition().y,
-        10, WHITE
-    );
 }
 
 void Ball::AddForce(Vector2 force)
@@ -183,16 +173,16 @@ void Stick::Update()
         force_amount++;
 
     if (IsKeyPressed(KEY_F1) && shown)
-        sprite_rotation = 0.0;
-    
-    if (IsKeyPressed(KEY_F2) && shown)
-        sprite_rotation = 90.0;
-
-    if (IsKeyPressed(KEY_F3) && shown)
         sprite_rotation = 180.0;
     
-    if (IsKeyPressed(KEY_F4) && shown)
+    if (IsKeyPressed(KEY_F2) && shown)
         sprite_rotation = 270.0;
+
+    if (IsKeyPressed(KEY_F3) && shown)
+        sprite_rotation = 0.0;
+    
+    if (IsKeyPressed(KEY_F4) && shown)
+        sprite_rotation = 90.0;
 
     if (sprite_rotation > 360) sprite_rotation = 0;
     if (sprite_rotation < 0) sprite_rotation = 359;
@@ -202,8 +192,7 @@ void Stick::Draw()
 {
     if (shown)
     {
-        DrawLineV(GetPosition(), { GetCurrentForce().x + GetPosition().x, GetCurrentForce().y + GetPosition().y }, BLUE);
-        // std::cout << GetCurrentForce().x << " " << GetCurrentForce().y << std::endl;
+        DrawLineV({ GetPosition().x, GetPosition().y }, { GetCurrentForce().x + GetPosition().x, GetCurrentForce().y + GetPosition().y }, WHITE);
 
         DrawTexturePro(
             sprite_texture,

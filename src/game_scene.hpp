@@ -11,6 +11,7 @@ private:
     Turn current_turn;
     Turn player_winner;
     bool is_foul;
+    bool any_balls_in_flag = false;
     int big_balls_inside;
     int small_balls_inside;
 

@@ -125,13 +125,11 @@ namespace GameManager
             DrawableManager::DrawAll();
 
             UpdatePhysics();
-            DrawColliders();
+            //DrawColliders();
 
             // Draw FPS
-            DrawText(std::to_string(GetFPS()).c_str(), 0, 0, 20, GREEN);
+            DrawText(std::to_string(GetFPS()).c_str(), 0, WINDOW_HEIGHT - 20, 20, GREEN);
 
-            // Draw Mouse Position
-            // DrawText(TextFormat("%.0f, %.0f", GetMousePosition().x, GetMousePosition().y), 0, WINDOW_HEIGHT - 20, 20, GREEN);
         EndDrawing();
     }
     
